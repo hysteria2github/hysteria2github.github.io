@@ -2,11 +2,12 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://hysteria2github.github.io/news/article-26631.htm" />
+        <link rel="canonical" href="https://hysteria2github.github.io" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpringBoot 自定义ThreadPoolTaskScheduler线程池执行定时任务</title>
-        <meta name="description" content="&nbsp; &nbsp; &nbsp; &nbsp; 最近项目中有使用到通过自定义线程池来执行定时任务操作的配置，特此记录便于日后查阅。 package com.xxx.iot.message.re" />
+    <title>隐私申明 - Hysteria2 Github免费机场节点订阅官网</title>
+        <meta name="keywords" content="隐私申明 - Hysteria2 Github免费机场节点订阅官网" />
+        <meta name="description" content="隐私申明 - Hysteria2 Github免费机场节点订阅官网" />
         <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
     <!-- Bootstrap core CSS -->
     <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +32,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="detail">
+<body data-page="newly_discovered_nodes">
         <!--Navbar Start-->
     <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
         <div class="container-fluid custom-container">
@@ -76,9 +77,10 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <h1 class="title mt-5 mt-lg-0">
-                            SpringBoot 自定义ThreadPoolTaskScheduler线程池执行定时任务                        </h1>
+                            隐私申明
+                        </h1>
                         <p class="f-16 my-4 text-muted">
-                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                            <a href="/">首页</a> / 隐私申明
                         </p>
                     </div>
                     <div class="col-lg-6 mt-5">
@@ -98,12 +100,52 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp; &nbsp; &nbsp; 最近项目中有使用到通过自定义线程池来执行定时任务操作的配置，特此记录便于日后查阅。</p> <pre><code class="language-java">package com.xxx.iot.message.restapi.config;  import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration; import org.springframework.scheduling.annotation.EnableScheduling; import org.springframework.scheduling.annotation.SchedulingConfigurer; import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor; import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler; import org.springframework.scheduling.config.ScheduledTaskRegistrar;  import java.util.concurrent.ThreadPoolExecutor;  /**  * @author zhangzhixiang on 2022/8/10  */ @Configuration @EnableScheduling public class ThreadPoolConfig implements SchedulingConfigurer {      /**      * 定时任务使用的线程池      * @return      */     @Bean(destroyMethod = "shutdown", name = "taskScheduler")     public ThreadPoolTaskScheduler taskScheduler(){         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();         scheduler.setPoolSize(3);         scheduler.setThreadNamePrefix("timer-thread");         scheduler.setAwaitTerminationSeconds(600);         scheduler.setWaitForTasksToCompleteOnShutdown(true);         return scheduler;     }      @Override     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {         scheduledTaskRegistrar.setTaskScheduler(taskScheduler());     } } </code></pre> <p>&nbsp; &nbsp; &nbsp; &nbsp; 到此SpringBoot 自定义ThreadPoolTaskScheduler线程池执行定时任务操作介绍完成。</p> </p></div> 			                <div class="clearfix"></div>
-                <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-26181.htm">动物注射疫苗后过敏反应的处理方法是什么（动物注射疫苗后过敏反应的处理方法是什么意思）</a></p>
-                                        <p>下一个：<a href="/news/article-26632.htm">宠物粮食加工厂加盟条件是什么样的呢（小型宠物粮加工厂需要什么手续）</a></p>
-                                    </div>
-                                </div>
+                    <p>本平台专注于为用户提供V2ray、Clash等免费节点订阅服务，我们深知用户隐私的重要性，并致力于保护用户的个人信息和隐私安全。本隐私声明旨在明确告知用户本平台如何收集、使用、存储和保护用户的个人信息。</p>
+<p>一、信息收集</p>
+<ol>
+    <li>
+        <p><strong>用户主动提供的信息</strong>：当用户在本平台注册、使用服务或参与特定活动时，可能会主动提供个人信息，如姓名、邮箱地址等。这些信息将仅用于提供服务或活动的目的，并在用户明确同意的情况下进行收集。</p>
+    </li>
+    <li>
+        <p><strong>服务使用数据</strong>：为了优化用户体验和服务质量，本平台可能会自动收集用户在使用服务过程中产生的数据，如访问记录、节点使用情况等。这些数据将用于分析服务使用情况，以便我们持续改进服务。</p>
+    </li>
+</ol>
+<p>二、信息使用</p>
+<ol>
+    <li>
+        <p><strong>提供服务</strong>：本平台将使用收集到的信息来提供用户所需的服务，包括但不限于节点订阅、服务更新通知等。</p>
+    </li>
+    <li>
+        <p><strong>数据分析</strong>：我们可能会对收集到的数据进行分析，以了解用户的使用习惯和需求，从而改进和优化服务。</p>
+    </li>
+    <li>
+        <p><strong>法律合规</strong>：在必要时，我们可能会根据法律法规的要求，向相关部门提供用户的个人信息，以配合执法或调查工作。</p>
+    </li>
+</ol>
+<p>三、信息存储与保护</p>
+<ol>
+    <li>
+        <p><strong>信息安全</strong>：本平台将采取必要的技术和管理措施，确保用户个人信息的安全。我们会对存储的数据进行加密处理，并定期进行安全检查和漏洞修复。</p>
+    </li>
+    <li>
+        <p><strong>信息存储期限</strong>：我们将根据服务需求和相关法律法规的要求，合理确定用户个人信息的存储期限。一旦超出存储期限，我们将对个人信息进行删除或匿名化处理。</p>
+    </li>
+</ol>
+<p>四、用户权利</p>
+<ol>
+    <li>
+        <p><strong>访问与更正</strong>：用户有权访问自己的个人信息，并对其进行更正。用户可以通过本平台提供的联系方式，申请查看或修改自己的个人信息。</p>
+    </li>
+    <li>
+        <p><strong>删除</strong>：在用户停止使用服务或注销账户后，我们将根据用户的请求，删除或匿名化处理其个人信息。</p>
+    </li>
+    <li>
+        <p><strong>投诉与举报</strong>：如果用户认为本平台在处理个人信息方面存在违法行为，可以通过本平台提供的联系方式进行投诉或举报。</p>
+    </li>
+</ol>
+<p>五、隐私声明的更新与修改</p>
+<p>本平台有权根据实际情况和法律法规的变化，对本隐私声明进行更新和修改。任何对隐私声明的修改都将通过本平台公告或电子邮件等方式通知用户。用户在使用服务时，应定期查看隐私声明，以了解最新的个人信息保护措施。</p>
+                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -111,16 +153,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-23836.htm" title="海拉鲁大陆地图解锁（海拉鲁大陆地图哪里找到）">海拉鲁大陆地图解锁（海拉鲁大陆地图哪里找到）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-hysteria-github.htm" title="11月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-subscribe-node.htm" title="12月8日→20.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月8日→20.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-26180.htm" title="我想卖狗在哪里卖（卖狗的联系电话）">我想卖狗在哪里卖（卖狗的联系电话）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-14-hysteria-node-share.htm" title="9月14日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月14日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share-links.htm" title="11月4日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月4日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-14-hysteria-node-github.htm" title="11月14日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月14日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-node-subscribe-links.htm" title="11月6日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月6日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-25239.htm" title="被打了疫苗的动物抓伤需要打狂犬疫苗吗（被打过疫苗的动物抓伤）">被打了疫苗的动物抓伤需要打狂犬疫苗吗（被打过疫苗的动物抓伤）</a></li>
-                        <li class="py-2"><a href="/news/article-27098.htm" title="猫咪领养协议书下载（宠物猫领养协议书）">猫咪领养协议书下载（宠物猫领养协议书）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-hysteria-github.htm" title="11月21日→21.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月21日→21.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-sing-hysteria-windows.htm" title="11月23日→19.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月23日→19.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25698.htm" title="宠物粮食加工设备有哪些品牌 宠物粮食加工设备有哪些品牌好">宠物粮食加工设备有哪些品牌 宠物粮食加工设备有哪些品牌好</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-subscribe-node.htm" title="11月7日→19.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月7日→19.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24771.htm" title="北京农业大学动物医院营业时间表（北京农业大学动物医院官网）">北京农业大学动物医院营业时间表（北京农业大学动物医院官网）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-latest-hysteria-node.htm" title="12月1日→18.2M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月1日→18.2M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-free-node-subscribe-links.htm" title="10月20日→21M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月20日→21M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-latest-hysteria-node.htm" title="12月9日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月9日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-free-node-subscribe.htm" title="9月23日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月23日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-18-hysteria-node-github.htm" title="9月18日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月18日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
