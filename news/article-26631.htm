@@ -17,8 +17,7 @@
     <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
-    
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -98,7 +97,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp; &nbsp; &nbsp; 最近项目中有使用到通过自定义线程池来执行定时任务操作的配置，特此记录便于日后查阅。</p> <pre><code class="language-java">package com.xxx.iot.message.restapi.config;  import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration; import org.springframework.scheduling.annotation.EnableScheduling; import org.springframework.scheduling.annotation.SchedulingConfigurer; import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor; import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler; import org.springframework.scheduling.config.ScheduledTaskRegistrar;  import java.util.concurrent.ThreadPoolExecutor;  /**  * @author zhangzhixiang on 2022/8/10  */ @Configuration @EnableScheduling public class ThreadPoolConfig implements SchedulingConfigurer {      /**      * 定时任务使用的线程池      * @return      */     @Bean(destroyMethod = "shutdown", name = "taskScheduler")     public ThreadPoolTaskScheduler taskScheduler(){         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();         scheduler.setPoolSize(3);         scheduler.setThreadNamePrefix("timer-thread");         scheduler.setAwaitTerminationSeconds(600);         scheduler.setWaitForTasksToCompleteOnShutdown(true);         return scheduler;     }      @Override     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {         scheduledTaskRegistrar.setTaskScheduler(taskScheduler());     } } </code></pre> <p>&nbsp; &nbsp; &nbsp; &nbsp; 到此SpringBoot 自定义ThreadPoolTaskScheduler线程池执行定时任务操作介绍完成。</p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp; &nbsp; &nbsp; 最近项目中有使用到通过自定义线程池来执行定时任务操作的配置，特此记录便于日后查阅。</p> <pre><code class="language-java">package com.xxx.iot.message.restapi.config;  import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration; import org.springframework.scheduling.annotation.EnableScheduling; import org.springframework.scheduling.annotation.SchedulingConfigurer; import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor; import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler; import org.springframework.scheduling.config.ScheduledTaskRegistrar;  import java.util.concurrent.ThreadPoolExecutor;  /**  * @author zhangzhixiang on 2022/8/10  */ @Configuration @EnableScheduling public class ThreadPoolConfig implements SchedulingConfigurer {      /**      * 定时任务使用的线程池      * @return      */     @Bean(destroyMethod = "shutdown", name = "taskScheduler")     public ThreadPoolTaskScheduler taskScheduler(){         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();         scheduler.setPoolSize(3);         scheduler.setThreadNamePrefix("timer-thread");         scheduler.setAwaitTerminationSeconds(600);         scheduler.setWaitForTasksToCompleteOnShutdown(true);         return scheduler;     }      @Override     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {         scheduledTaskRegistrar.setTaskScheduler(taskScheduler());     } } </code></pre> <p>&nbsp; &nbsp; &nbsp; &nbsp; 到此SpringBoot 自定义ThreadPoolTaskScheduler线程池执行定时任务操作介绍完成。</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-26181.htm">动物注射疫苗后过敏反应的处理方法是什么（动物注射疫苗后过敏反应的处理方法是什么意思）</a></p>
                                         <p>下一个：<a href="/news/article-26632.htm">宠物粮食加工厂加盟条件是什么样的呢（小型宠物粮加工厂需要什么手续）</a></p>
@@ -111,16 +111,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-23836.htm" title="海拉鲁大陆地图解锁（海拉鲁大陆地图哪里找到）">海拉鲁大陆地图解锁（海拉鲁大陆地图哪里找到）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-hysteria-github.htm" title="11月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-subscribe-node.htm" title="12月8日→20.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月8日→20.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-26180.htm" title="我想卖狗在哪里卖（卖狗的联系电话）">我想卖狗在哪里卖（卖狗的联系电话）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-14-hysteria-node-share.htm" title="9月14日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月14日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share-links.htm" title="11月4日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月4日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-14-hysteria-node-github.htm" title="11月14日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月14日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-node-subscribe-links.htm" title="11月6日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月6日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-25239.htm" title="被打了疫苗的动物抓伤需要打狂犬疫苗吗（被打过疫苗的动物抓伤）">被打了疫苗的动物抓伤需要打狂犬疫苗吗（被打过疫苗的动物抓伤）</a></li>
-                        <li class="py-2"><a href="/news/article-27098.htm" title="猫咪领养协议书下载（宠物猫领养协议书）">猫咪领养协议书下载（宠物猫领养协议书）</a></li>
+                        <li class="py-2"><a href="/news/article-21089.htm" title="Git恢复之前版本的两种方法reset、revert（图文详解）">Git恢复之前版本的两种方法reset、revert（图文详解）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-hysteria-node-share.htm" title="10月26日→22.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月26日→22.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-hysteria-github.htm" title="10月21日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月21日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23838.htm" title="中农大动物医院有限公司是国企吗还是私企（中农大动物医院怎么样）">中农大动物医院有限公司是国企吗还是私企（中农大动物医院怎么样）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe.htm" title="12月15日→19.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月15日→19.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24770.htm" title="销售动物疫苗免增值税么为什么不能抵扣（动物疫苗好卖吗）">销售动物疫苗免增值税么为什么不能抵扣（动物疫苗好卖吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-sing-hysteria-windows.htm" title="10月31日→20.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月31日→20.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-15-free-hysteria-node.htm" title="11月15日→21.2M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月15日→21.2M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-hysteria-github.htm" title="12月2日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月2日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-node-subscribe-links.htm" title="10月12日→21M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月12日→21M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
