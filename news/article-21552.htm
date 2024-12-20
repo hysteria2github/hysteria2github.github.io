@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>如何在IDEA 中配置 Maven</title>
         <meta name="description" content="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maven 是一个能使我们的java程序开发节省时间和精力，是开发变得相对简单，还能使开发规范化的工具。" />
-        <link rel="icon" href="__ADDON__/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
     <!-- Bootstrap core CSS -->
     <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
     <!-- tiny slider -->
@@ -17,8 +17,7 @@
     <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
-    
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -98,7 +97,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maven 是一个能使我们的java程序开发节省时间和精力，是开发变得相对简单，还能使开发规范化的工具。在我们开发过程中导入的第三方jar包可能需要其他jar包的支持才能使用，而我们要去弄明白这些依赖的jar包，然后导入，这一过程可能需要耗费我们大量的精力和时间。有时候如果需要的jar数量过于panda，无疑会给我们的开发添堵。&nbsp;而使用 Maven 后，<span style="color:#fe2c24;"><strong>Maven 就可以替我们自动的将当前 jar 包所依赖的其他所有 jar 包全部导入进来，</strong></span>&nbsp;不需要我们自己再去导入相关jar包，能够节省大量的时间和精力，我们也可以不用去了解哪个jar包依赖了哪个jar包，直接配置Maven仓库就行。但相对地会对它产生极大的依赖。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下是在IDEA中配置Maven的两种方式：</p> <p><strong><span style="color:#fe2c24;">第一种是配置IDEA中自带的Maven插件。</span></strong></p> <p><strong><span style="color:#fe2c24;"></span></strong><span style="color:#0d0016;">&nbsp; 我们在新建模块或者项目时，可以直接新建一个Maven项目，如图所示。要使这个Maven项目能够正常的运行，需要做一些相关配置</span></p> <p><img fetchpriority="high" decoding="async" alt="" height="616" src="http://img.555519.xyz/uploads3/20220603/4176fa35dc64956e8812d7b7e316265e.jpg"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一步：在IDEA的安装目录下找到maven的配置文件：IntelliJ IDEA 2018.3.6\plugins\maven\lib\maven3\conf/settings.xml，然后在里面配置本地仓库的位置</p> <pre><code>&lt;localRepository&gt;E:\LocalRepository（本地仓库的位置）&lt;/localRepository&gt;</code></pre> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;第二步：为了使maven能够自动从中央仓库下载需要的jar包，我们需要给它配置阿里云镜像仓库：在&nbsp; settings.xml 文件的标&lt;mirrors&gt;&lt;/mirrors&gt;标签里面配置以下标签：</p> <pre><code>&lt;mirror&gt;  &lt;id&gt;nexus-aliyun&lt;/id&gt;  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;  &lt;name&gt;Nexus aliyun&lt;/name&gt;  &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt; &lt;/mirror&gt;</code></pre> <p><img decoding="async" alt="" height="1161" src="http://img.555519.xyz/uploads3/20220603/30def03d90ec42ed16259e842195ca8d.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 第三步：配置完第二步后，我们打开IDEA的Settings/Build,Execution,Deployment/Maven目录，可以发现Maven的主目录为IDEA自带的maven目录，配置文件为自带maven目录下的config/settings.xml文件，本地仓库为我们在配置文件中配置的本地仓库地址。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 最后设置Maven自动导包功能：勾上Settings/Build,Execution,Deployment/Maven/Importing下的Import Maven projects automatically选项，给maven设置自动导jar包的功能。</p> <p><img decoding="async" alt="" height="1150" src="http://img.555519.xyz/uploads3/20220603/cdf8f96f97b932ea13b1840191466d16.jpg"></p> <p><strong><span style="color:#fe2c24;">第二种是配置我们自己安装的maven核心程序。</span></strong></p> <p><strong><span style="color:#fe2c24;"></span></strong><span style="color:#0d0016;">&nbsp; 我们在新建模块或者项目时，可以直接新建一个Maven项目，如图所示。要使这个Maven项目能够正常的运行，需要做一些相关配置</span></p> <p><img loading="lazy" decoding="async" alt="" height="1163" src="http://img.555519.xyz/uploads3/20220603/3f7b74d2784e5562850a7117532a4add.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;然后保存就可以了。</p> </div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maven 是一个能使我们的java程序开发节省时间和精力，是开发变得相对简单，还能使开发规范化的工具。在我们开发过程中导入的第三方jar包可能需要其他jar包的支持才能使用，而我们要去弄明白这些依赖的jar包，然后导入，这一过程可能需要耗费我们大量的精力和时间。有时候如果需要的jar数量过于panda，无疑会给我们的开发添堵。&nbsp;而使用 Maven 后，<span style="color:#fe2c24;"><strong>Maven 就可以替我们自动的将当前 jar 包所依赖的其他所有 jar 包全部导入进来，</strong></span>&nbsp;不需要我们自己再去导入相关jar包，能够节省大量的时间和精力，我们也可以不用去了解哪个jar包依赖了哪个jar包，直接配置Maven仓库就行。但相对地会对它产生极大的依赖。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以下是在IDEA中配置Maven的两种方式：</p> <p><strong><span style="color:#fe2c24;">第一种是配置IDEA中自带的Maven插件。</span></strong></p> <p><strong><span style="color:#fe2c24;"></span></strong><span style="color:#0d0016;">&nbsp; 我们在新建模块或者项目时，可以直接新建一个Maven项目，如图所示。要使这个Maven项目能够正常的运行，需要做一些相关配置</span></p> <p><img fetchpriority="high" decoding="async" alt="" height="616" src="http://img.555519.xyz/uploads3/20220603/4176fa35dc64956e8812d7b7e316265e.jpg"></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一步：在IDEA的安装目录下找到maven的配置文件：IntelliJ IDEA 2018.3.6\plugins\maven\lib\maven3\conf/settings.xml，然后在里面配置本地仓库的位置</p> <pre><code>&lt;localRepository&gt;E:\LocalRepository（本地仓库的位置）&lt;/localRepository&gt;</code></pre> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;第二步：为了使maven能够自动从中央仓库下载需要的jar包，我们需要给它配置阿里云镜像仓库：在&nbsp; settings.xml 文件的标&lt;mirrors&gt;&lt;/mirrors&gt;标签里面配置以下标签：</p> <pre><code>&lt;mirror&gt;  &lt;id&gt;nexus-aliyun&lt;/id&gt;  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;  &lt;name&gt;Nexus aliyun&lt;/name&gt;  &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt; &lt;/mirror&gt;</code></pre> <p><img decoding="async" alt="" height="1161" src="http://img.555519.xyz/uploads3/20220603/30def03d90ec42ed16259e842195ca8d.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 第三步：配置完第二步后，我们打开IDEA的Settings/Build,Execution,Deployment/Maven目录，可以发现Maven的主目录为IDEA自带的maven目录，配置文件为自带maven目录下的config/settings.xml文件，本地仓库为我们在配置文件中配置的本地仓库地址。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 最后设置Maven自动导包功能：勾上Settings/Build,Execution,Deployment/Maven/Importing下的Import Maven projects automatically选项，给maven设置自动导jar包的功能。</p> <p><img decoding="async" alt="" height="1150" src="http://img.555519.xyz/uploads3/20220603/cdf8f96f97b932ea13b1840191466d16.jpg"></p> <p><strong><span style="color:#fe2c24;">第二种是配置我们自己安装的maven核心程序。</span></strong></p> <p><strong><span style="color:#fe2c24;"></span></strong><span style="color:#0d0016;">&nbsp; 我们在新建模块或者项目时，可以直接新建一个Maven项目，如图所示。要使这个Maven项目能够正常的运行，需要做一些相关配置</span></p> <p><img loading="lazy" decoding="async" alt="" height="1163" src="http://img.555519.xyz/uploads3/20220603/3f7b74d2784e5562850a7117532a4add.jpg"></p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;然后保存就可以了。</p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-21089.htm">Git恢复之前版本的两种方法reset、revert（图文详解）</a></p>
                                         <p>下一个：<a href="/news/article-21553.htm">我被猫咬了,没去***,会不会死狂犬病（被猫咬了没打狂犬疫苗会死吗）</a></p>
@@ -111,16 +111,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-12-latest-hysteria-node.htm" title="11月12日→20.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月12日→20.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-22463.htm" title="宠物医院的好评怎么写 宠物医院的好评怎么写文案">宠物医院的好评怎么写 宠物医院的好评怎么写文案</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-subscribe-node.htm" title="11月7日→19.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月7日→19.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-30-sing-hysteria-windows.htm" title="9月30日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月30日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-27-node-share.htm" title="9月27日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月27日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-21553.htm" title="我被猫咬了,没去***,会不会死狂犬病（被猫咬了没打狂犬疫苗会死吗）">我被猫咬了,没去***,会不会死狂犬病（被猫咬了没打狂犬疫苗会死吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-23-free-node-subscribe.htm" title="9月23日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月23日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-node-subscribe-links.htm" title="10月12日→21M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月12日→21M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-22000.htm" title="合肥猫猫领养网站官网（合肥猫咪领养网站）">合肥猫猫领养网站官网（合肥猫咪领养网站）</a></li>
+                        <li class="py-2"><a href="/news/article-23836.htm" title="海拉鲁大陆地图解锁（海拉鲁大陆地图哪里找到）">海拉鲁大陆地图解锁（海拉鲁大陆地图哪里找到）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-sing-hysteria-windows.htm" title="11月13日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月13日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-sing-hysteria-windows.htm" title="10月8日→22.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月8日→22.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-hysteria-node.htm" title="10月23日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月23日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-12-2-hysteria-github.htm" title="12月2日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月2日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-high-speed-nodes.htm" title="11月20日→21.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月20日→21.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26180.htm" title="我想卖狗在哪里卖（卖狗的联系电话）">我想卖狗在哪里卖（卖狗的联系电话）</a></li>
+                        <li class="py-2"><a href="/news/article-22466.htm" title="宠物店打疫苗有疫苗本吗（宠物店里打疫苗给证吗）">宠物店打疫苗有疫苗本吗（宠物店里打疫苗给证吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-hysteria-node.htm" title="10月13日→19.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月13日→19.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-hysteria-github.htm" title="12月5日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月5日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -132,7 +132,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -157,6 +157,15 @@
             <div class="row justify-content-center pt-5">
                 <div class="col-lg-12">
                     <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                         <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
                     </div>
                 </div>
