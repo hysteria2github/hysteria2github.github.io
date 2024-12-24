@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-30380.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>携程开源分布式配置系统Apollo服务端是如何实时更新配置的</title>
+        <meta name="description" content="前面有写过一篇《分布式配置中心apollo是如何实时感知配置被修改》，也就是客户端client是如何知道配置被修改了，有不少读者私信我你既然说了client端是如何感知的，那服务端又是如何知道配置被修" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+                        <a class="navbar-brand logo text-uppercase" href="/">
+                <span>Hysteria2 Github</span>
+            </a>
+                        <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">关于</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">联系</a>
+                    </li>
+                </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            携程开源分布式配置系统Apollo服务端是如何实时更新配置的                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				</h1> <p>前面有写过一篇<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/5KQUS1YqcWnF2rHihfSgpA"  target="_blank" rel="nofollow">《分布式配置中心apollo是如何实时感知配置被修改》</a>，也就是客户端client是如何知道配置被修改了，有不少读者私信我你既然说了client端是如何感知的，那服务端又是如何知道配置被修改了。今天我们就一起来看看Apollo在Portal修改了配置文件，怎么通知到configService的。什么是portal和configService 建议可以看看这一篇文章篇<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/5KQUS1YqcWnF2rHihfSgpA"  target="_blank" rel="nofollow">《分布式配置中心apollo是如何实时感知配置被修改》</a>，里面对这些模块都有简单的介绍，你如果实在不想看也行，我直接截个图过来<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ea1cfdf13fed854ce6811d1023b3e6f7.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"></p> </h1> <p>我们来看官网提供的一张图<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/74b57851f5cf227cf6527719df5f8267.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"></p> <blockquote> <p>1.用户在Portal操作配置发布<br /> 2.Portal调用Admin Service的接口操作发布<br /> 3.Admin Service发布配置后，发送ReleaseMessage给各个Config Service<br /> 4.Config Service收到ReleaseMessage后，通知对应的客户端</p> </blockquote> <p>上面的流程就是从Portal到ConfigService主要流程，下面我们来看看具体的细节。要知道细节我们要自己动手去调试一把源码。<br /> 我们可以照着官网的文档，自己本地把项目run起来。文档写的还是很详细的，只要按照步骤来都能运行的起来。我们随便新建一个项目然后去编辑下key，然后打开浏览器的F12当我们点击提交按钮的时候我们就知道她到底调用了那些接口，有了接口我们就知道了入口剩下的就是打断点进行调试了。</p> <h3 id="portal-如何获取adminservice">portal 如何获取AdminService</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d733b365f794dae6b6b295314a1787a9.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 根据这个方法我们是不是就可以定位到portal模块后端代码的controller。找到对应的controller打开看一看基本没有什么业务逻辑<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d9b2674d420e104714408d3d4555da3a.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 然后<code>portal</code>紧接着就是去调用<code>adminService</code>了。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a88ef7181f22cd8bfcd17fc4875e0ff0.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 根据上图我们就可以的方法我们就可以找到对应的adminService了，portal是如何找到对应的adminService服务的，因为adminService 是可以部署多台机器，这里就要用到服务注册和发现了adminService只有被注册到服务中心，portal才可以通过服务注册中心来获取对应的adminService服务了。<code>Apollo</code> 默认是采用eureka来作为服务注册和发现，它也提供了nacos、consul来作为服务注册和发现，还提供了一种kubernetes不采用第三方来做服务注册和发现，直接把服务的地址配置在数据库。如果地址有多个可以在数据库逗号分隔。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/43f22a6ee1db0eb835828355cbb7b5b1.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 它提供了四种获取服务列表的实现方式，如果我们使用的注册中心是eureka 我们是不是需要通过eureka的api去获取服务列表，如果我们的服务发现使用的是nacos我们是不是要通过nacos的API去获取服务列表。。。所以Apollo提供了一个MetaService 层，封装服务发现的细节，对Portal和Client而言，永远通过一个Http接口获取Admin Service和Config Service的服务信息，而不需要关心背后实际的服务注册和发现组件。就跟我们平时搬砖一样没有啥是通过增加一个中间层解决不了的问题，一个不行那就再加一个。所以MetaService提供了两个接口services/admin 和services/config 来分别获取Admin Service和Config Service的服务信息。那么Portal 是如何来调用services/admin这个接口的呢？在 apollo-portal 项目里面com.ctrip.framework.apollo.portal.component#AdminServiceAddressLocator 这个类里面，</p> <ul> <li>这个类在加载的时候会通过MetaService 提供的services/admin 接口获取adminService的服务地址进行缓存。</li> </ul> <pre><code class="language-java">  @PostConstruct   public void init() {     allEnvs = portalSettings.getAllEnvs();     //init restTemplate     restTemplate = restTemplateFactory.getObject();          refreshServiceAddressService =         Executors.newScheduledThreadPool(1, ApolloThreadFactory.create("ServiceLocator", true)); 	// 创建延迟任务，1s后开始执行获取AdminService服务地址     refreshServiceAddressService.schedule(new RefreshAdminServerAddressTask(), 1, TimeUnit.MILLISECONDS);   }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9c1cd4904412f36b5cae21d7c6734aa6.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 上面要去MetaService 请求地址，那么MetaService的地址又是什么呢？这个又如何获取？com.ctrip.framework.apollo.portal.environment#DefaultPortalMetaServerProvider 这个类。</p> <p>portal 这个模块说完了，我们接着回到<code>adminService</code>了。通过<code>portal</code>调用adminService的接口地址我们很快可以找到它的入口<br /> AdminService 的实现也很简单</p> <pre><code class="language-java">   @PreAcquireNamespaceLock @PostMapping("/apps/{appId}/clusters/{clusterName}/namespaces/{namespaceName}/items")   public ItemDTO create(@PathVariable("appId") String appId,                         @PathVariable("clusterName") String clusterName,                         @PathVariable("namespaceName") String namespaceName, @RequestBody ItemDTO dto) {     Item entity = BeanUtils.transform(Item.class, dto);      ConfigChangeContentBuilder builder = new ConfigChangeContentBuilder();     Item managedEntity = itemService.findOne(appId, clusterName, namespaceName, entity.getKey());     if (managedEntity != null) {       throw new BadRequestException("item already exists");     }     entity = itemService.save(entity);     builder.createItem(entity);     dto = BeanUtils.transform(ItemDTO.class, entity);      Commit commit = new Commit();     commit.setAppId(appId);     commit.setClusterName(clusterName);     commit.setNamespaceName(namespaceName);     commit.setChangeSets(builder.build());     commit.setDataChangeCreatedBy(dto.getDataChangeLastModifiedBy());     commit.setDataChangeLastModifiedBy(dto.getDataChangeLastModifiedBy());     commitService.save(commit);      return dto;   }</code></pre> <h4 id="preacquirenamespacelock-注解">PreAcquireNamespaceLock 注解</h4> <p>首先方法上有个@PreAcquireNamespaceLock 这个注解，这个根据名字都应该能够去猜一个大概就是去获取NameSpace的分布式锁，现在分布式锁比较常见的方式是采用redis和zookeeper。但是在这里apollo是采用数据库来实现的，具体怎么细节大家可以去看看源码应该都看的懂，无非就是加锁往DB里面插入一条数据，释放锁然后把这个数据进行删除。稍微有点不一样的就是如果获取锁失败，就直接返回失败了，不会在继续自旋或者休眠重新去获取锁。 因为获取锁失败说明已经有其他人在你之前修改了配置，只有这个人新增的配置被发布或者删除之后，其他人才能继续新增配置，这样的话就会导致一个NameSpace只能同时被一个人修改。这个限制是默认关闭的需要我们在数据库里面去配置（ApolloConfigDb的ServiceConfig表）<img decoding="async" src="http://img.555519.xyz/uploads3/20220509/82f82d88c8f2ca78fcd388cd90ddda88.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 一般我们应用的配置修改应该是比较低频的，多人同时去修改的话情况会比较少，再说有些公司是开发提交配置，测试去发布配置，提交和修改不能是同一个人，这样的话新增配置冲突就更少了，应该没有必要去配置namespace.lock.switch=true一个namespace只能一个人去修改。</p> <p>接下来的代码就非常简单明了，就是一个简单的参数判断然后执行入库操作了，把数据插入到<code>Item</code>表里面。这是我们新增的配置数据就已经保存了。效果如下<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9eea1224cda52c79cb9d06ac9b1b5b5b.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 这时候新增的配置是不起作用的，不会推送给客户端的。只是单纯一个类似于草稿的状态。</p> <h3 id="发布配置">发布配置</h3> <p>接下来我们要使上面新增的配置生效，并且推送给客户端。同样的我们点击发布按钮然后就能知道对应的后端方法入口<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f5f7517b34aa5402d7eef37f05466f93.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"><br /> 我们通过这个接口可以直接找到<code>adminService</code>的方法入口</p> <pre><code class="language-java"> public ReleaseDTO publish(@PathVariable("appId") String appId,                             @PathVariable("clusterName") String clusterName,                             @PathVariable("namespaceName") String namespaceName,                             @RequestParam("name") String releaseName,                             @RequestParam(name = "comment", required = false) String releaseComment,                             @RequestParam("operator") String operator,                             @RequestParam(name = "isEmergencyPublish", defaultValue = "false") boolean isEmergencyPublish) {     Namespace namespace = namespaceService.findOne(appId, clusterName, namespaceName);     if (namespace == null) {       throw new NotFoundException(String.format("Could not find namespace for %s %s %s", appId,                                                 clusterName, namespaceName));     }     Release release = releaseService.publish(namespace, releaseName, releaseComment, operator, isEmergencyPublish);      //send release message     Namespace parentNamespace = namespaceService.findParentNamespace(namespace);     String messageCluster;     if (parentNamespace != null) {       messageCluster = parentNamespace.getClusterName();     } else {       messageCluster = clusterName;     }     messageSender.sendMessage(ReleaseMessageKeyGenerator.generate(appId, messageCluster, namespaceName),                               Topics.APOLLO_RELEASE_TOPIC);     return BeanUtils.transform(ReleaseDTO.class, release);   }</code></pre> <ul> <li>上述代码就不仔细展开分析了，感兴趣的可以自己断点调试下我们重点看下<code>releaseService.publish</code> 这个方法，里面有一些灰度发布相关的逻辑，不过这个不是本文的重点，这个方法主要是往release表插入数据。</li> <li>接下来就是<code>messageSender.sendMessage</code>这个方法了，这个方法主要是往<code>ReleaseMessage</code>表里面插入一条记录。保存完<code>ReleaseMessage</code>这个表会得到相应的主键ID，然后把这个ID放入到一个队列里面。然后在加载DatabaseMessageSender的时候会默认起一个定时任务去获取上面队列里面放入的消息ID，然后找出比这这些ID小的消息删除掉。<br /> 发布流程就完了，这里也没有说到服务端是怎么感知有配置修改了的。</li> </ul> <h3 id="config-service-通知配置变化">Config Service 通知配置变化</h3> <p><code>apolloConfigService</code> 在服务启动的时候<code>ReleaseMessageScanner</code> 会启动一个定时任务 每隔1s去去查询<code>ReleaseMessage</code>里面有没有最新的消息，如果有就会通知到所有的消息监听器比如<code>NotificationControllerV2</code>、<code>ConfigFileController</code>等，这个消息监听器注册是在ConfigServiceAutoConfiguration里面注册的。<br /><code>NotificationControllerV2</code> 得到配置发布的<code>AppId+Cluster+Namespace</code> 后，会通知对应的客户端，这样就从portal到<code>configService</code> 到 client 整个消息通知变化就串起来了。服务端通知客户端的具体细节可以看看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/5KQUS1YqcWnF2rHihfSgpA"  target="_blank" rel="nofollow">《分布式配置中心apollo是如何实时感知配置被修改》</a><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0f411c373c854fd3f3e67c1309c3a285.jpg" alt="携程开源分布式配置系统Apollo服务端是如何实时更新配置的"></p> <h3 id="总结">总结</h3> <p>这样服务端配置如何更新的流程就完了。</p> <blockquote> <p>1.用户在Portal操作配置发布<br /> 2.Portal调用Admin Service的接口操作发布<br /> 3.Admin Service发布配置后，发送ReleaseMessage给各个Config Service<br /> 4.Config Service收到ReleaseMessage后，通知对应的客户端</p> </blockquote> <p>apollo的源码相对于其他中间件来说还是相对于比较简单的，比较适合于想研究下中间件源码，又不知道如何下手的同学 。</p> <h3 id="结束">结束</h3> <ul> <li>由于自己才疏学浅，难免会有纰漏，假如你发现了错误的地方，还望留言给我指出来,我会对其加以修正。</li> <li>如果你觉得文章还不错，你的转发、分享、赞赏、点赞、留言就是对我最大的鼓励。</li> <li>感谢您的阅读,十分欢迎并感谢您的关注。</li> </ul> <p>站在巨人的肩膀<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.apolloconfig.com/#/zh/design/apollo-design?id=%e4%b8%80%e3%80%81%e6%80%bb%e4%bd%93%e8%ae%be%e8%ae%a1"  target="_blank" rel="nofollow">https://www.apolloconfig.com/#/zh/design/apollo-design?id=一、总体设计</a><br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.iocoder.cn/Apollo/client-polling-config/"  target="_blank" rel="nofollow">https://www.iocoder.cn/Apollo/client-polling-config/</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-30379.htm">SpringBoot和Mybatis配置多数据源连接多个数据库</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-high-speed-nodes.htm" title="12月20日→22.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月20日→22.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-1-free-node-subscribe.htm" title="10月1日→22.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月1日→22.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-26-hysteria-node-github.htm" title="9月26日→18M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月26日→18M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-15-hysteria-node.htm" title="9月15日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月15日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24304.htm" title="动物疫苗的意义和价值（动物疫苗对人体有害吗）">动物疫苗的意义和价值（动物疫苗对人体有害吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-node-share-links.htm" title="12月22日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月22日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-node-share.htm" title="12月18日→19.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月18日→19.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26181.htm" title="动物注射疫苗后过敏反应的处理方法是什么（动物注射疫苗后过敏反应的处理方法是什么意思）">动物注射疫苗后过敏反应的处理方法是什么（动物注射疫苗后过敏反应的处理方法是什么意思）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月14日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23372.htm" title="125型饲料颗粒机价格（125饲料颗粒机多少钱）">125型饲料颗粒机价格（125饲料颗粒机多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
