@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-32274.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pandas中的apply()使用</title>
+        <meta name="description" content="apply() 函数可以直接对 Series 或者 DataFrame 中元素进行逐元素遍历操作，方便且高效，apply() 使用时，通常放入一个 lambda 函数表达式、或一个函数作为操作运算。 " />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+                        <a class="navbar-brand logo text-uppercase" href="/">
+                <span>Hysteria2 Github</span>
+            </a>
+                        <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">关于</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">联系</a>
+                    </li>
+                </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            pandas中的apply()使用                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>apply() 函数可以直接对 Series 或者 DataFrame 中元素进行逐元素遍历操作，方便且高效，apply() 使用时，通常放入一个 lambda 函数表达式、或一个函数作为操作运算。</p> <pre><code class="prism language-python">DataFrame<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> func<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> raw<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> result_type<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwds </code></pre> <p>参数说明：</p> <ul> <li>func 代表的是传入的函数或 lambda 表达式；</li> <li>axis 参数可提供的有两个，该参数默认为0/列<br /> 0 或者 index ，表示函数处理的是每一列；<br /> 1 或 columns ，表示处理的是每一行;</li> <li>raw ；bool 类型，默认为 False;<br /> False ，表示把每一行或列作为 Series 传入函数中；<br /> True，表示接受的是 ndarray 数据类型；</li> </ul> <p>apply() 最后的是经过函数处理，数据以 Series 或 DataFrame 格式返回。<br /> 先看Series的apply()使用：</p> <pre><code class="prism language-python">s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> a <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> b <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <p>输出结果：<br /> 1<br /> 2<br /> 3<br /> &lt;class ‘int’&gt;<br /> &lt;class ‘int’&gt;<br /> &lt;class ‘int’&gt;<br /> 可以看出，在apply()中，会自动取出每个元素，相当于循环遍历了一遍调用的Series<br /> a,b的输出结果为:<br /> 0, None<br /> 1, None<br /> 2, None<br /> 因为中间的lambda函数只是打印，所以返回的是None。<br /> 在DataFrame中apply()的使用：<br /> DataFrame中传入的参数就是Series结构了，例如：</p> <pre><code class="prism language-python">matrix <span class="token operator">=</span> <span class="token punctuation">[</span>     <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span> <span class="token punctuation">]</span> df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>matrix<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token string">'xyz'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <p>df的结构长这样：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/8c90f4955cbaed26ff0af016a6716ff9.jpg" alt="pandas中的apply()使用"></p> <pre><code class="prism language-python">a<span class="token operator">=</span>df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <p>输出如下：<br /> &lt;class ‘pandas.core.series.Series’&gt;<br /> &lt;class ‘pandas.core.series.Series’&gt;<br /> &lt;class ‘pandas.core.series.Series’&gt;<br /> 可见传入lambda函数的参数类型是Series<br /> 现在求DataFrame中每个数的平方：</p> <pre><code class="prism language-python">a<span class="token operator">=</span>df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token operator">*</span>x<span class="token punctuation">)</span> </code></pre> <p>输出：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/7ceda1b67935ad7513ffd010577296a2.jpg" alt="pandas中的apply()使用">用apply()求指定行的平方：</p> <pre><code class="prism language-python">a<span class="token operator">=</span>df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token operator">*</span>x <span class="token keyword">if</span> x<span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">'a'</span> <span class="token keyword">else</span> x<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> </code></pre> <p>输出如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/e969cadf0c30ebf189bb4606d3e8595f.jpg" alt="pandas中的apply()使用"><br /> 发现一种奇怪的现象：</p> <pre><code class="prism language-python">a<span class="token operator">=</span>df<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">if</span> x<span class="token punctuation">.</span>name<span class="token operator">==</span><span class="token string">'a'</span> <span class="token keyword">else</span> <span class="token boolean">None</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> </code></pre> <p>输出如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/1c93343e00e40f73b94f8b8594f3e726.jpg" alt="pandas中的apply()使用"><br /> 其实主要是看lambda函数返回的是什么，在DataFrame中，传入的是Series，返回的自然是Series的运算结果。例如上面求对第一行的Series求平方，结果还是一个Series（如下例），而对第一行求平均数返回的是一个数，自然结果的第一行就成了一个数。</p> <pre><code class="prism language-python">s <span class="token operator">=</span> pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> ss <span class="token operator">=</span> s<span class="token operator">*</span>s <span class="token keyword">print</span><span class="token punctuation">(</span>ss<span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>ss<span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230118/a30c4c6e42afb5de785b68f722f1f962.jpg" alt="pandas中的apply()使用"><br /> 总的来说，apply()函数就是自动对Series或DataFrame中的每个元素执行指定的函数操作。特别注意DataFrame中的参数是Series，那么函数中自然就是对Series的操作了。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-31797.htm">动物防疫站周六周日上班吗（动物疫病预防控制中心周末上班吗）</a></p>
+                                        <p>下一个：<a href="/news/article-32275.htm">动物防疫站可以打狂犬疫苗吗要钱吗（动物防疫站可以打狂犬疫苗吗要钱吗现在）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-subscribe-node.htm" title="10月4日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月4日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-30-sing-hysteria-windows.htm" title="9月30日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月30日→21.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-today-hysteria-node.htm" title="11月3日→19.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月3日→19.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-latest-hysteria-node.htm" title="11月16日→21.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月16日→21.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-today-hysteria-node.htm" title="10月22日→22.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月22日→22.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-high-speed-nodes.htm" title="10月10日→22.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月10日→22.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-hysteria-node-github.htm" title="11月5日→21.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月5日→21.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21553.htm" title="我被猫咬了,没去***,会不会死狂犬病（被猫咬了没打狂犬疫苗会死吗）">我被猫咬了,没去***,会不会死狂犬病（被猫咬了没打狂犬疫苗会死吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-3-today-hysteria-node.htm" title="10月3日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月3日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-26-today-hysteria-node.htm" title="11月26日→22.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月26日→22.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
