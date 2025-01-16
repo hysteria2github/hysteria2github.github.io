@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-40509.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端发送复杂JSON数据，后端使用@RequestBody接收</title>
+        <meta name="description" content="* JSON属性如下  * loginName: "jay"  * password : "3333"  * roles    : { id : 4 }  * user     : { name:"u" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+                        <a class="navbar-brand logo text-uppercase" href="/">
+                <span>Hysteria2 Github</span>
+            </a>
+                        <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">关于</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">联系</a>
+                    </li>
+                </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            前端发送复杂JSON数据，后端使用@RequestBody接收                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <pre class="has"><code class="language-html"> * JSON属性如下  * loginName: "jay"  * password : "3333"  * roles    : { id : 4 }  * user     : { name:"username" , officeName : "java"}  * ---------------------------------------------------------  * Java实体如下  * MyEntity   * String loginName  * String password  * RoleEntity roles   RoleEntity中有一个id属性接收  * UserEntity user    UserEntity中有name 、 officeName 属性接收  *  */</code></pre> <p>什么意思呢？</p> <p>前端发送的JSON数据，除了普通的键值对，还有<span style="color: #f33b45;">键--对象</span>， 比如 roles : { id : 4}。</p> <p>那么，对应的后台Java实体，其属性应该持有一个，叫roles的对象引用，比如 private RoleEntity roles ;</p> <p>这个RoleEntity对象，应该有id属性，从而接收 id:4这组键值对。</p> <p>同理，后台Java实体，也应该有一个 UserEntity 来 接收 JSON数据中&nbsp;{ name:"username" , officeName : "java"}。</p> <p>伪代码如下</p> <pre class="has"><code class="language-java">   //后台Java实体类名 &nbsp; &nbsp;class MyEntity {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; private String loginName;  //映射Json的loginName属性  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; private String password;   //映射Json的password属性  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; private RoleEntity roles;  //映射Json的roles对象 , 引用要与JSON属性一致！   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; private UserEntity user;   //映射Json的user对象  ，引用要与JSON属性一致！  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;class&nbsp; RoleEntity{  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; private Long id;    &nbsp; &nbsp; &nbsp; &nbsp;  }   &nbsp; &nbsp; &nbsp; &nbsp; class UserEntity{  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;private String name;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  private String officeName;  &nbsp; &nbsp; &nbsp; &nbsp; }&nbsp; &nbsp;  &nbsp; }     Controller中      @RequestMapping(value="url")   public JsonResponse  handerSomething(@RequestBody MyEntity ref)</code></pre> </h1> </h1> <p><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220905/4f40afd7521a78c9664e1a5357af81f4.jpg" alt="前端发送复杂JSON数据，后端使用@RequestBody接收"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40024.htm">动物的疫苗多久打一次好 动物的疫苗多久打一次好呢</a></p>
+                                        <p>下一个：<a href="/news/article-40511.htm">宠物粮市场分析论文怎么写好（宠物粮市场开发方案）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-hysteria-github.htm" title="11月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-sing-hysteria-windows.htm" title="11月13日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月13日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-free-node-subscribe.htm" title="1月7日→20M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月7日→20M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39550.htm" title="JS教程之 TypeScript 与 JavaScript的主要区别">JS教程之 TypeScript 与 JavaScript的主要区别</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-hysteria-github.htm" title="11月21日→21.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月21日→21.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24771.htm" title="北京农业大学动物医院营业时间表（北京农业大学动物医院官网）">北京农业大学动物医院营业时间表（北京农业大学动物医院官网）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-today-hysteria-node.htm" title="12月13日→20M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月13日→20M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24770.htm" title="销售动物疫苗免增值税么为什么不能抵扣（动物疫苗好卖吗）">销售动物疫苗免增值税么为什么不能抵扣（动物疫苗好卖吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-hysteria-node.htm" title="12月12日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月12日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37551.htm" title="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈">学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

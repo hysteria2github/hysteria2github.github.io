@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-41501.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite2+Vue3+ts的eslint设置踩坑</title>
+        <meta name="description" content="目录  新项目了 Vite搭建 eslint  先安装eslint 创建.eslintrc.js 引入规则  Airbnb   配合prettier 对ts的支持 .eslintrc.js   在页面" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+                        <a class="navbar-brand logo text-uppercase" href="/">
+                <span>Hysteria2 Github</span>
+            </a>
+                        <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">关于</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">联系</a>
+                    </li>
+                </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            Vite2+Vue3+ts的eslint设置踩坑                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E6%96%B0%E9%A1%B9%E7%9B%AE%E4%BA%86" rel="nofollow">新项目了</a></li> <li><a href="#vite%E6%90%AD%E5%BB%BA" rel="nofollow">Vite搭建</a></li> <li><a href="#eslint" rel="nofollow">eslint</a> <ul> <li><a href="#%E5%85%88%E5%AE%89%E8%A3%85eslint" rel="nofollow">先安装eslint</a></li> <li><a href="#%E5%88%9B%E5%BB%BAeslintrcjs" rel="nofollow">创建.eslintrc.js</a></li> <li><a href="#%E5%BC%95%E5%85%A5%E8%A7%84%E5%88%99" rel="nofollow">引入规则</a> <ul> <li><a href="#airbnb" rel="nofollow">Airbnb</a></li> </ul> </li> <li><a href="#%E9%85%8D%E5%90%88prettier" rel="nofollow">配合prettier</a></li> <li><a href="#%E5%AF%B9ts%E7%9A%84%E6%94%AF%E6%8C%81" rel="nofollow">对ts的支持</a></li> <li><a href="#eslintrcjs" rel="nofollow">.eslintrc.js</a></li> </ul> </li> <li><a href="#%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%8A%E6%9F%A5%E7%9C%8Beslint%E6%8A%A5%E9%94%99" rel="nofollow">在页面上查看eslint报错</a></li> <li><a href="#%E4%BD%BF%E7%94%A8setup-sugar%E7%9A%84%E5%9D%91" rel="nofollow">使用setup sugar的坑</a></li> </ul> </div> <h3 id="新项目了">新项目了</h3> <p>浑浑噩噩一个五年前的vue2的项目维护了一年多，要开始重构了。前端还是vue2，要加个后台系统来管理配置化功能。后台管理就捡起vue3吧，好久没写了，看看有啥新东西玩，有空了再更新一下博客。</p> <h3 id="vite搭建">Vite搭建</h3> <p>之前写了个用vue-cli来搭建的（<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/rion1234567/p/14119120.html"  target="_blank" rel="nofollow">vue-cli脚手架搭建vue3.0+typescripe项目</a>），还是Vue3刚出来那会踩的坑，现在vite逐渐成熟，性能、速度也比webpack要好，也来踩踩的。<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://cn.vitejs.dev/guide/"  target="_blank" rel="nofollow">Vite</a>官网已经写的很详细了，不赘述，无坑。<br /><code>yarn create vite vue-app --template vue-ts</code></p> <h3 id="eslint">eslint</h3> <h4 id="先安装eslint">先安装eslint</h4> <p><code>yarn add -D eslint</code></p> <h4 id="创建eslintrcjs">创建.eslintrc.js</h4> <p>先来点基本配置</p> <pre><code>  module.exports = {     root: true,     env: {   	node: true,   	browser: true,   	es2021: true,     },     parserOptions: {   	ecmaVersion: 12,     },   }</code></pre> <h4 id="引入规则">引入规则</h4> <p>我这里就用几个官方规范吧，下面总是要自己配置一堆的，也可以用其他的优秀开源规范（<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/airbnb/javascript"  target="_blank" rel="nofollow">Airbnb</a>）<br /><code>yarn add -D eslint-plugin-vue</code><br /> .eslintrc中extends添加<code>'plugin:vue/vue3-recommended'</code></p> <h5 id="airbnb">Airbnb</h5> <p>如果要用Airbnb，需要安装<code>eslint-config-airbnb-base</code>和<code>eslint-plugin-import</code></p> <pre><code>yarn add -D eslint-config-airbnb-base eslint-plugin-import</code></pre> <p>.eslintrc中extends添加<code>'airbnb-base'</code></p> <h4 id="配合prettier">配合prettier</h4> <pre><code>yarn add -D eslint-plugin-prettier eslint-config-prettier yarn add -D -E prettier</code></pre> <p>.eslintrc差不多就写成这样</p> <pre><code>  ……   extends: [   	'plugin:vue/vue3-recommended',   	'eslint:recommended',   	'plugin:prettier/recommended'   ],   plugins: [ 'prettier'],   rules: {   	'prettier/prettier': 0,   }   ……</code></pre> <h4 id="对ts的支持">对ts的支持</h4> <pre><code>yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser</code></pre> <p>.eslintrc中添加配置</p> <pre><code>plugins: ['@typescript-eslint'], parserOptions: {   parser: '@typescript-eslint/parser' }</code></pre> <h4 id="eslintrcjs">.eslintrc.js</h4> <p>至此，eslint配置完成，可以正常使用，上代码</p> <pre><code>  module.exports = {     root: true,     env: {   	node: true,   	es2021: true,   	browser: true     },     extends: [   	'plugin:vue/vue3-recommended',   	'eslint:recommended',   	'plugin:prettier/recommended'     ],     plugins: ['@typescript-eslint', 'prettier'],     parserOptions: {   	parser: '@typescript-eslint/parser',   	ecmaVersion: 12     },     rules: {   	'prettier/prettier': 0,   	……     }   }</code></pre> <h3 id="在页面上查看eslint报错">在页面上查看eslint报错</h3> <p>强逼迫福音，经常有时候没注意看命令行，报错就一直留下来，提交代码也会被拦住。添加<code>vite-plugin-eslint</code>插件即可<br /> 在vite.config.ts中配置</p> <pre><code>  import { defineConfig } from 'vite'   import vue from '@vitejs/plugin-vue'   import eslintPlugin from 'vite-plugin-eslint'    export default defineConfig({     plugins: [   	vue(),   	eslintPlugin({   	  exclude: ['./node_modules/**'],   	  cache: false   	})     ]   })</code></pre> <p>记笔记！<code>cache</code>这个属性一定要带上<code>false</code>，否则修复的问题还是会不停报出来错，有毒。</p> <h3 id="使用setup-sugar的坑">使用setup sugar的坑</h3> <p><code>&lt;script setup&gt;</code>支持不return直接用，使用eslint旧版会报错<br /><code>'xxx' is assigned a value but never used.</code><br /> 在.eslintrc配置<code>'no-unused-vars': [0]</code>可解决<br /> 我试了新版本没有这个问题，在template里面使用变量就不会标红报错</p> <p>使用<code>defineProps</code>时eslint会报错，说未定义<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/afa5882f338f63e4e01be1a5cb059f55.jpg" alt="Vite2+Vue3+ts的eslint设置踩坑"><br /> 这个时候如果你在vue中引入<code>defineProps</code><br /><code>import {  defineProps } from 'vue'</code><br /> 那么你会得到另一个报错</p> <pre><code>[@vue/compiler-sfc] `defineProps` is a compiler macro and no longer needs to be imported.</code></pre> <p>解决方法：<br /> 在.eslintrc中，添加配置</p> <pre><code>env: {   // ...   'vue/setup-compiler-macros': true }</code></pre> <p>cool~</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41009.htm">宠物零食制作方法大全（宠物零食制作教程）</a></p>
+                                        <p>下一个：<a href="/news/article-41502.htm">动物医院名字大全集图片及名称英文（动物医院牌匾）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-hysteria-github.htm" title="10月21日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月21日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-sing-hysteria-windows.htm" title="1月12日→21.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月12日→21.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38055.htm" title="宠物领养网站的设计与实现开题报告范文怎么写（宠物领养系统国内外现状）">宠物领养网站的设计与实现开题报告范文怎么写（宠物领养系统国内外现状）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-high-speed-nodes.htm" title="12月20日→22.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月20日→22.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-high-speed-nodes.htm" title="11月19日→22.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月19日→22.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25239.htm" title="被打了疫苗的动物抓伤需要打狂犬疫苗吗（被打过疫苗的动物抓伤）">被打了疫苗的动物抓伤需要打狂犬疫苗吗（被打过疫苗的动物抓伤）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-hysteria-node-share.htm" title="11月9日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月9日→18.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19256.htm" title="反射获取class对象和类实例">反射获取class对象和类实例</a></li>
+                        <li class="py-2"><a href="/news/article-30861.htm" title="小型颗粒饲料机器多少钱一台（小型饲料颗粒机原理动态图）">小型颗粒饲料机器多少钱一台（小型饲料颗粒机原理动态图）</a></li>
+                        <li class="py-2"><a href="/news/article-29426.htm" title="南京农业大学动物医学院地址（南京农业大学 动物医学类）">南京农业大学动物医学院地址（南京农业大学 动物医学类）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
