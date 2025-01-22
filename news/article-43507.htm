@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-43507.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(SQL支持和变通方案)</title>
+        <meta name="description" content="由于Citus 通过扩展PostgreSQL 提供分布式功能，因此它与PostgreSQL 结构兼容。这意味着用户可以使用丰富且可扩展的PostgreSQL 生态系统附带的工具和功能来处理使用Citu" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-43507.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(SQL支持和变通方案)" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/41089b03cf7c009b744692efeb14e18a.webp" />
+        <meta property="og:release_date" content="2025-01-20T07:12:23" />
+    <meta property="og:updated_time" content="2025-01-20T07:12:23" />
+        <meta property="og:description" content="由于Citus 通过扩展PostgreSQL 提供分布式功能，因此它与PostgreSQL 结构兼容。这意味着用户可以使用丰富且可扩展的PostgreSQL 生态系统附带的工具和功能来处理使用Citu" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(SQL支持和变通方案)">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+                        <a class="navbar-brand logo text-uppercase" href="/">
+                <span>Hysteria2 Github</span>
+            </a>
+                        <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">关于</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">联系</a>
+                    </li>
+                </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(SQL支持和变通方案)                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/668f2b8b041cff97bea99d7939ef541a.jpg" alt="Citus 分布式 PostgreSQL 集群 - SQL Reference(SQL支持和变通方案)"></p> <p>由于<code>Citus</code> 通过扩展<code>PostgreSQL</code> 提供分布式功能，因此它与<code>PostgreSQL</code> 结构兼容。这意味着用户可以使用丰富且可扩展的<code>PostgreSQL</code> 生态系统附带的工具和功能来处理使用<code>Citus</code> 创建的分布式表。</p> <p><code>Citus</code> 对它能够在单个工作节点上执行的任何查询具有<code>100%</code> 的<code>SQL</code> 覆盖率。 在访问有关单个租户的信息时，此类查询在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/use_cases/multi_tenant.html#mt-use-case"  target="_blank" rel="nofollow">多租户应用程序</a>中很常见。</p> <p>甚至跨节点查询（用于并行计算）也支持大多数<code>SQL</code> 功能。 但是，组合来自多个节点的信息的查询不支持某些<code>SQL</code> 功能。</p> <p><strong>跨节点 SQL 查询的限制：</strong></p> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/current/static/sql-select.html#SQL-FOR-UPDATE-SHARE"  target="_blank" rel="nofollow"><code>SELECT … FOR UPDATE</code></a> 仅适用于单分片查询</li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/current/static/sql-select.html#SQL-FROM"  target="_blank" rel="nofollow"><code>TABLESAMPLE</code></a> 仅适用于单分片查询</li> <li>关联子查询仅当关联在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/get_started/concepts.html#dist-column"  target="_blank" rel="nofollow">分布列</a>上时才受支持。</li> <li>分布式表之间的外连接仅在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/get_started/concepts.html#dist-column"  target="_blank" rel="nofollow">分布列</a>上受支持。</li> <li>仅当分布式表在外侧时，才支持分布式表和引用表或本地表之间的外连接</li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/current/static/queries-with.html#idm46428713247840"  target="_blank" rel="nofollow">递归 CTE</a> 仅适用于单分片查询</li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/current/static/queries-table-expressions.html#QUERIES-GROUPING-SETS"  target="_blank" rel="nofollow">分组集</a>仅适用于单分片查询</li> </ul> <p>要了解有关<code>PostgreSQL</code> 及其功能的更多信息，您可以访问<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.postgresql.org/docs/current/static/index.html"  target="_blank" rel="nofollow">PostgreSQL 文档</a>。有关<code>PostgreSQL</code> SQL 命令方言（可供<code>Citus</code> 用户按原样使用）的详细参考，您可以查看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.postgresql.org/docs/current/static/sql-commands.html"  target="_blank" rel="nofollow">SQL 命令参考</a>。</p> <h2 id="变通方案">变通方案</h2> <p>在尝试变通方案之前，请考虑<code>Citus</code> 是否适合您的情况。<code>Citus</code> 当前版本适用于<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/get_started/what_is_citus.html#when-to-use-citus"  target="_blank" rel="nofollow">实时分析和多租户用例</a>。</p> <p><code>Citus</code> 支持多租户用例中的所有<code>SQL</code> 语句。即使在跨节点查询的实时分析用例中，<code>Citus</code> 也支持大多数语句。<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/faq/faq.html#unsupported"  target="_blank" rel="nofollow"><code>Citus</code> 不支持的<code>PostgreSQL</code> 特性中列出了几种不受支持的查询类型？</a> 许多不受支持的功能都有变通方案；以下是一些最有用的。</p> <h3 id="使用-cte-解决限制">使用 CTE 解决限制</h3> <p>当<code>SQL</code> 查询不受支持时，解决它的一种方法是使用<code>CTE</code>，它使用我们所谓的<code>pull-push</code> 执行。</p> <pre><code class="language-sql">SELECT * FROM ref LEFT JOIN dist USING (id) WHERE dist.value &gt; 10; /* ERROR:  cannot pushdown the subquery DETAIL:  There exist a reference table in the outer part of the outer join */</code></pre> <p>要解决此限制，您可以通过将分布式部分包装在<code>CTE</code> 中来将查询转换为路由器查询</p> <pre><code class="language-sql">WITH x AS (SELECT * FROM dist WHERE dist.value &gt; 10) SELECT * FROM ref LEFT JOIN x USING (id);</code></pre> <p>请记住，<code>coordinator</code> 会将<code>CTE</code> 的结果发送给所有需要它进行处理的<code>worker</code>。 因此，最好将最具体的过滤器和限制添加到内部查询中，或者聚合表。 这减少了此类查询可能导致的网络开销。在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/performance/performance_tuning.html#subquery-perf"  target="_blank" rel="nofollow">子查询/CTE 网络开销</a>中了解更多信息。</p> <h3 id="临时表不得已的解决方法">临时表：不得已的解决方法</h3> <p>即使通过子查询使用推拉执行，仍有一些查询<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/faq/faq.html#unsupported"  target="_blank" rel="nofollow">不受支持</a>。其中之一是在分布式表上使用<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUPING-SETS"  target="_blank" rel="nofollow">分组集</a>。</p> <p>在我们的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.citusdata.com/en/v11.0-beta/get_started/tutorial_realtime_analytics.html#real-time-analytics-tutorial"  target="_blank" rel="nofollow">实时分析教程</a>中，我们创建了一个名为<code>github_events</code> 的表，由<code>user_id</code> 列分布。让我们查询它并找到一组预选的<code>repos</code> 的最早事件，按事件类型和事件公开的组合分组。一种方便的方法是使用分组集。 但是，如前所述，分布式查询尚不支持此功能：</p> <pre><code class="language-sql">-- this won't work   SELECT repo_id, event_type, event_public,          grouping(event_type, event_public),          min(created_at)     FROM github_events    WHERE repo_id IN (8514, 15435, 19438, 21692) GROUP BY repo_id, ROLLUP(event_type, event_public);</code></pre> <pre><code class="language-sql">ERROR:  could not run distributed query with GROUPING HINT:  Consider using an equality filter on the distributed table's partition column.</code></pre> <p>不过，有一个窍门。我们可以将相关信息作为临时表拉取到<code>coordinator</code>：</p> <pre><code class="language-sql">-- grab the data, minus the aggregate, into a local table  CREATE TEMP TABLE results AS (   SELECT repo_id, event_type, event_public, created_at     FROM github_events        WHERE repo_id IN (8514, 15435, 19438, 21692)     );  -- now run the aggregate locally    SELECT repo_id, event_type, event_public,          grouping(event_type, event_public),          min(created_at)     FROM results GROUP BY repo_id, ROLLUP(event_type, event_public);</code></pre> <pre><code> repo_id |    event_type     | event_public | grouping |         min ---------+-------------------+--------------+----------+---------------------     8514 | PullRequestEvent  | t            |        0 | 2016-12-01 05:32:54     8514 | IssueCommentEvent | t            |        0 | 2016-12-01 05:32:57    19438 | IssueCommentEvent | t            |        0 | 2016-12-01 05:48:56    21692 | WatchEvent        | t            |        0 | 2016-12-01 06:01:23    15435 | WatchEvent        | t            |        0 | 2016-12-01 05:40:24    21692 | WatchEvent        |              |        1 | 2016-12-01 06:01:23    15435 | WatchEvent        |              |        1 | 2016-12-01 05:40:24     8514 | PullRequestEvent  |              |        1 | 2016-12-01 05:32:54     8514 | IssueCommentEvent |              |        1 | 2016-12-01 05:32:57    19438 | IssueCommentEvent |              |        1 | 2016-12-01 05:48:56    15435 |                   |              |        3 | 2016-12-01 05:40:24    21692 |                   |              |        3 | 2016-12-01 06:01:23    19438 |                   |              |        3 | 2016-12-01 05:48:56     8514 |                   |              |        3 | 2016-12-01 05:32:54</code></pre> <p>在<code>coordinator</code> 上创建临时表是最后的手段。它受节点的磁盘大小和<code>CPU</code> 的限制。</p> <h2 id="更多">更多</h2> <ol> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/SElF3WkEBfrPub72OjlQJg"  target="_blank" rel="nofollow">Citus 分布式 PostgreSQL 集群 - SQL Reference(创建和修改分布式表 DDL)</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/yfBI9vgDj4TTmML2BOjlzw"  target="_blank" rel="nofollow">Citus 分布式 PostgreSQL 集群 - SQL Reference(摄取、修改数据 DML)</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/MenUhEHTbOJ8ENReqQOVSg"  target="_blank" rel="nofollow">Citus 分布式 PostgreSQL 集群 - SQL Reference(查询分布式表 SQL)</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/g97RP3xmERj7_Rr8qUhjqw"  target="_blank" rel="nofollow">Citus 分布式 PostgreSQL 集群 - SQL Reference(查询处理)</a></li> </ol> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-43003.htm">上海正规免费领养宠物猫（上海领养猫咪的平台）</a></p>
+                                        <p>下一个：<a href="/news/article-43508.htm">猫咪疫苗三针要隔多少天（猫咪的三针疫苗间隔多久）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19256.htm" title="反射获取class对象和类实例">反射获取class对象和类实例</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-high-speed-nodes.htm" title="11月19日→22.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月19日→22.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-today-hysteria-node.htm" title="1月4日→20.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月4日→20.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-sing-hysteria-windows.htm" title="12月4日→22.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月4日→22.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43996.htm" title="宠物粮食品牌排名榜前十名有哪些牌子（宠物粮食品牌排行榜）">宠物粮食品牌排名榜前十名有哪些牌子（宠物粮食品牌排行榜）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-latest-hysteria-node.htm" title="12月9日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月9日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-33709.htm" title="开个动物医院需要办理那些证件和手续（开个动物医院需要办理那些证件和手续和证件）">开个动物医院需要办理那些证件和手续（开个动物医院需要办理那些证件和手续和证件）</a></li>
+                        <li class="py-2"><a href="/news/article-20172.htm" title="狗粮加工机器设备（狗粮加工机器设备有哪些）">狗粮加工机器设备（狗粮加工机器设备有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-hysteria-node.htm" title="12月31日→22.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">12月31日→22.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-node-share-links.htm" title="12月22日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月22日→19.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
