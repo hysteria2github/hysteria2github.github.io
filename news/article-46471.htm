@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-46471.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue刷新当前页面几种方式</title>
+        <meta name="description" content="问题  最近些日子项目中突然碰到了一个需求，再完成编辑操作之后需要进行页面刷新，通过实验有如下几种姿势可以解决需求中的问题，下面进行简单总结如下。  姿势一：this.$router.go(0)  这" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-46471.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="Vue刷新当前页面几种方式" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/292d863820422976d2cd4c8617080596.webp" />
+        <meta property="og:release_date" content="2025-01-26T09:59:28" />
+    <meta property="og:updated_time" content="2025-01-26T09:59:28" />
+        <meta property="og:description" content="问题  最近些日子项目中突然碰到了一个需求，再完成编辑操作之后需要进行页面刷新，通过实验有如下几种姿势可以解决需求中的问题，下面进行简单总结如下。  姿势一：this.$router.go(0)  这" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue刷新当前页面几种方式">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+                        <a class="navbar-brand logo text-uppercase" href="/">
+                <span>Hysteria2 Github</span>
+            </a>
+                        <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">关于</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">联系</a>
+                    </li>
+                </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            Vue刷新当前页面几种方式                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>问题</p> <blockquote> <p>最近些日子项目中突然碰到了一个需求，再完成编辑操作之后需要进行页面刷新，通过实验有如下几种姿势可以解决需求中的问题，下面进行简单总结如下。</p> </blockquote> <p>姿势一：<code>this.$router.go(0)</code></p> <blockquote> <p>这个姿势是利用了 history 中前进和后退的功能，传入 0 刷新当前页面。但是有一个问题就是页面整个刷新过程中会白屏，严重影响用户的体验感，效果不好。</p> <pre><code>this.$router.go(0) </code></pre> </blockquote> <p>姿势二：<code>location.reload()</code></p> <blockquote> <p>这个姿势是利用了直接使用刷新当前页面的方法。但是同样存在有一个问题就是页面整个刷新过程中会白屏，严重影响用户的体验感，效果也是不好，和姿势一的现象一直，也不推荐使用。</p> <pre><code class="language-javascript">location.reload() </code></pre> </blockquote> <p>姿势三：<code>provide / inject组合</code></p> <blockquote> <p>允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。<br /><code>provide：</code>选项应该是一个对象或返回一个对象的函数。该对象包含可注入其子孙的属性。<br /><code>inject：</code>一个字符串数组，或一个对象，对象的 key 是本地的绑定名。<br /> 注意：provide和inject绑定并不是可响应的。这是刻意为之的。如果你传入了一个可监听的对象，那么其对象的属性还是可响应的。<br /> 基本使用步骤如下：</p> <ul> <li>步骤一：（App.vue）<br /> 通过 $nextTick()，协助实现。先把 &lt;router-view /&gt; 移除，移除后再重新添加，达到刷新当前页面的功能。是目前最合适的实现方式。</li> </ul> <pre><code class="language-html">&lt;template&gt;  &lt;div id="app"&gt;    &lt;router-view v-if="isRouterAlive"/&gt;  &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {  name: 'App',  provide () {    return{      reload: this.reload    }  },  data() {    return {        isRouterAlive: true    }  },  methods:{    reload(){      this.isRouterAlive = false      this.$nextTick(function(){        this.isRouterAlive = true      })    }  } } &lt;/script&gt; </code></pre> <ul> <li>步骤二：（chapter.vue）</li> </ul> <pre><code class="language-javascript">inject: ['reload'], </code></pre> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221207/9e04569a7a40d74dee684995a7928153.jpg"></p> <p>代码结构</p> <ul> <li>步骤三：（chapter.vue）<br /> 直接this.reload()调用，即可刷新当前页面。</li> </ul> <pre><code>this.reload()// 需要刷新页面 </code></pre> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221207/ae1e36da94ff82f940849d40ec73d5f9.jpg"></p> <p>代码结构</p> </blockquote> <p> &nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-45967.htm">动物使用疫苗时应注意哪些事项呢（动物注射疫苗应注意什么）</a></p>
+                                        <p>下一个：<a href="/news/article-46472.htm">宠物领养免费平台哪个好（宠物领养网免费）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-hysteria-node.htm" title="10月13日→19.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月13日→19.8M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-node-subscribe-links.htm" title="12月16日→20.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月16日→20.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21552.htm" title="如何在IDEA 中配置 Maven">如何在IDEA 中配置 Maven</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-free-high-speed-nodes.htm" title="11月22日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月22日→20.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-subscribe-node.htm" title="1月13日→18.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月13日→18.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share.htm" title="10月14日→19.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月14日→19.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37552.htm" title="宠物店领养协议书怎么写范文（宠物店领养是什么意思）">宠物店领养协议书怎么写范文（宠物店领养是什么意思）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-latest-hysteria-node.htm" title="1月14日→18M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月14日→18M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27098.htm" title="猫咪领养协议书下载（宠物猫领养协议书）">猫咪领养协议书下载（宠物猫领养协议书）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-today-hysteria-node.htm" title="11月3日→19.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月3日→19.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
