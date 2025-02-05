@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hysteria2github.github.io/news/article-22923.htm" />
@@ -8,6 +8,33 @@
     <title>Redis4-缓存过期和删除策略</title>
         <meta name="description" content="目录 为什么需要设置Redis的缓存过期？ 如何设置缓存过期 maxmemory配置项 不设置的场景 设置的场景 那么如何设置内存合理呢？根据业务进行判断 expire命令 expire的使用 缓存过" />
         <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-22923.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="Redis4-缓存过期和删除策略" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/b9dd54a7e160984e601fb1b5a5286419.webp" />
+        <meta property="og:release_date" content="2024-12-08T07:14:50" />
+    <meta property="og:updated_time" content="2024-12-08T07:14:50" />
+        <meta property="og:description" content="目录 为什么需要设置Redis的缓存过期？ 如何设置缓存过期 maxmemory配置项 不设置的场景 设置的场景 那么如何设置内存合理呢？根据业务进行判断 expire命令 expire的使用 缓存过" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Redis4-缓存过期和删除策略">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
     <!-- Bootstrap core CSS -->
     <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
     <!-- tiny slider -->
@@ -111,16 +138,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-subscribe-node.htm" title="12月8日→20.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月8日→20.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-node-subscribe-links.htm" title="9月29日→22.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">9月29日→22.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-26180.htm" title="我想卖狗在哪里卖（卖狗的联系电话）">我想卖狗在哪里卖（卖狗的联系电话）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-21-hysteria-github.htm" title="10月21日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">10月21日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-20172.htm" title="狗粮加工机器设备（狗粮加工机器设备有哪些）">狗粮加工机器设备（狗粮加工机器设备有哪些）</a></li>
-                        <li class="py-2"><a href="/news/article-31253.htm" title="亿迪猫粮怎么样（亿迪猫粮怎么样好吃吗）">亿迪猫粮怎么样（亿迪猫粮怎么样好吃吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-12-latest-hysteria-node.htm" title="11月12日→20.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月12日→20.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-3-today-hysteria-node.htm" title="12月3日→22.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月3日→22.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-hysteria-node.htm" title="11月30日→19M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月30日→19M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-27-today-hysteria-node.htm" title="11月27日→20.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月27日→20.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-48927.htm" title="动物执业医师资格（动物医生职业资格证书）">动物执业医师资格（动物医生职业资格证书）</a></li>
+                        <li class="py-2"><a href="/news/article-19715.htm" title="windows kubectl安装配置">windows kubectl安装配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-hysteria-node.htm" title="12月28日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月28日→19.9M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-free-node-subscribe-links.htm" title="12月14日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月14日→21.3M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27098.htm" title="猫咪领养协议书下载（宠物猫领养协议书）">猫咪领养协议书下载（宠物猫领养协议书）</a></li>
+                        <li class="py-2"><a href="/news/article-25698.htm" title="宠物粮食加工设备有哪些品牌 宠物粮食加工设备有哪些品牌好">宠物粮食加工设备有哪些品牌 宠物粮食加工设备有哪些品牌好</a></li>
+                        <li class="py-2"><a href="/news/article-42003.htm" title="仓鼠得了皮肤病会自愈吗（仓鼠得了皮肤病的症状）">仓鼠得了皮肤病会自愈吗（仓鼠得了皮肤病的症状）</a></li>
+                        <li class="py-2"><a href="/news/article-43507.htm" title="Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(SQL支持和变通方案)">Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(SQL支持和变通方案)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-node-subscribe.htm" title="1月19日→23M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月19日→23M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37064.htm" title="SpringMVC基础：自定义异常处理">SpringMVC基础：自定义异常处理</a></li>
                     </ul>
     </div>
 </div>
@@ -132,19 +159,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
