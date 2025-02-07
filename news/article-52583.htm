@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-52583.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++基础之C++中的输入输出</title>
+        <meta name="description" content="文章目录 文章目录 前言 一、输入输出流 二、c++中输入输出语句 1.标准输入设备 2.标准输出设备 3.原理 三、iostream类库   c++是一个重要的面向对象语言，本文梳理了c++中输入输" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-52583.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="C++基础之C++中的输入输出" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/207a585ceb4765df9cd82ad8c243027b.webp" />
+        <meta property="og:release_date" content="2025-02-07T07:19:25" />
+    <meta property="og:updated_time" content="2025-02-07T07:19:25" />
+        <meta property="og:description" content="文章目录 文章目录 前言 一、输入输出流 二、c++中输入输出语句 1.标准输入设备 2.标准输出设备 3.原理 三、iostream类库   c++是一个重要的面向对象语言，本文梳理了c++中输入输" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C++基础之C++中的输入输出">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+            <a class="navbar-brand logo text-uppercase" href="/">
+                        <span>Hysteria2 Github</span>
+                        </a>
+            <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">关于</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a href="#" class="nav-link ">联系</a>
+                    </li>
+                </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            C++基础之C++中的输入输出                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2 id="main-toc"><strong>文章目录</strong></h2> <p id="%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95-toc" style="margin-left:80px;"><a href="#%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95" rel="nofollow">文章目录</a></p> <p id="%E5%89%8D%E8%A8%80-toc" style="margin-left:0px;"><a href="#%E5%89%8D%E8%A8%80" rel="nofollow">前言</a></p> <p id="%E4%B8%80%E3%80%81%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81-toc" style="margin-left:0px;"><a href="#%E4%B8%80%E3%80%81%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81" rel="nofollow">一、输入输出流</a></p> <p id="%E4%BA%8C%E3%80%81c%2B%2B%E4%B8%AD%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5-toc" style="margin-left:0px;"><a href="#%E4%BA%8C%E3%80%81c%2B%2B%E4%B8%AD%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5" rel="nofollow">二、c++中输入输出语句</a></p> <p id="1.%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87-toc" style="margin-left:80px;"><a href="#1.%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87" rel="nofollow">1.标准输入设备</a></p> <p id="2.%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87-toc" style="margin-left:80px;"><a href="#2.%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87" rel="nofollow">2.标准输出设备</a></p> <p id="3.%E5%8E%9F%E7%90%86-toc" style="margin-left:80px;"><a href="#3.%E5%8E%9F%E7%90%86" rel="nofollow">3.原理</a></p> <p id="%E4%B8%89%E3%80%81iostream%E7%B1%BB%E5%BA%93-toc" style="margin-left:0px;"><a href="#%E4%B8%89%E3%80%81iostream%E7%B1%BB%E5%BA%93" rel="nofollow">三、iostream类库</a></p> <hr id="hr-toc"/> </h1> <p>c++是一个重要的面向对象语言，本文梳理了c++中输入输出基本语法以及关于输入出相关知识的总结</p> <hr/> </h1> <p>输入输出是数据传送的过程，c++中将此过程形象的称为流，c++中输入输出流输入输出流是指由若干字节组成的序列，这些字节序列中的数据按顺序从一个对象传送到另一个对象。在输入操作时，字节流从输入设备流向内存；在输出操作时，字节流从内存流向输出设备。流中的内容可以是ASCII码值、二进制形式数据、数字音频视频、图形图像或者其他形式的信息。</p> <p>（输入设备：如键盘、磁盘&nbsp;&nbsp; 输出设备：如屏幕、打印机等）</p> <p>在c++中，输入输出流被定义为类，c++的I/O库中的类为流类，用流类定义的对象称为流对象。</p> </h1> <h3 id="1.%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87">1.标准输入设备</h3> <p>cin 是标准输入设备（相当于键盘），连续从键盘读取数据，"&gt;&gt;"为提取运算符。</p> <p>输入的使用：cin &gt;&gt; 变量&nbsp; （cin在输入字符串时，空格作为结束符）</p> <h3 id="2.%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87">2.标准输出设备</h3> <p>cout 是标准输出设备（相当于屏幕）,"&lt;&lt;"为插入运算符。</p> <p>输出的使用：cout &lt;&lt; 输出项 &lt;&lt; endl&nbsp; (endl 相当于换行符"\n")</p> <p>代码示例如下：</p> <pre><code class="language-cpp">#include &lt;iostream&gt;  using namespace std;  int main() {     int a;     char ch;     cout &lt;&lt; "请输入一个常数" &lt;&lt; endl;     cin &gt;&gt; a;      cout &lt;&lt; "请输入一个字母" &lt;&lt; endl;     cin &gt;&gt; ch;      cout &lt;&lt; "常数为" &lt;&lt; a &lt;&lt; endl;     cout &lt;&lt; "字母为" &lt;&lt; ch &lt;&lt; endl;     return 0; } </code></pre> <p>运行结果：</p> <p><img fetchpriority="high" decoding="async" alt="" height="178" src="http://img.555519.xyz/uploads/20230108/77e997baa8a507495b9110f8288add6c.jpg"></p> <h3 id="3.%E5%8E%9F%E7%90%86">3.原理</h3> <p>在内存中为每个数据流开辟一个内存缓冲区，用来存放流中的数据。</p> <p>当用cin和&gt;&gt;输入数据时，从键盘获取的数据先放入键盘的缓冲区中，按回车键，键盘缓冲区数据输入到程序中输入缓冲区，形成cin流，然后用提取符"&gt;&gt;"从输入缓冲区中提取数据给程序中相关变量。</p> <p>在输出时，先将数据放入程序中的输出缓冲区保存，缓冲区满了或遇到endl时，将缓冲区中的数据传到显示器显示出来。</p> </h1> <p>ios是抽象基类，派生出istream类和ostream类，"i"和"o"分别代表输入和输出，由istream类和ostream类经过多重继承派生出的类为iostream类，支持输入输出操作，iostream类库中包含许多用于输入输出的类。</p> <p>与iostream类库有关的头文件：</p> <p>iostream 包含对输入输出流进行操作所需的基本信息</p> <p>fstream 用于用户管理的文件的I/O操作</p> <p>strstream 用于字符串流I/O操作</p> <p>stdiostream 用于混合使用C和C++的I/O机制时，例如将C程序转变为C++</p> <p>iomanip 使用格式化I/O时包含此头文件</p> <hr/> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52050.htm">宠物领养协议书怎么生效图片 宠物领养协议书怎么生效图片大全</a></p>
+                                        <p>下一个：<a href="/news/article-52584.htm">私下写的房屋归属协议有效吗（房屋转让协议书怎样才有法律效力）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-node-share-links.htm" title="12月21日→22.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月21日→22.5M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-free-node-subscribe-links.htm" title="12月16日→20.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月16日→20.4M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24771.htm" title="北京农业大学动物医院营业时间表（北京农业大学动物医院官网）">北京农业大学动物医院营业时间表（北京农业大学动物医院官网）</a></li>
+                        <li class="py-2"><a href="/news/article-21552.htm" title="如何在IDEA 中配置 Maven">如何在IDEA 中配置 Maven</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-today-hysteria-node.htm" title="12月13日→20M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月13日→20M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-node-share.htm" title="1月6日→18M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月6日→18M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-52583.htm" title="C++基础之C++中的输入输出">C++基础之C++中的输入输出</a></li>
+                        <li class="py-2"><a href="/news/article-23371.htm" title="动物医院诊疗活动范围是什么 动物医院诊疗活动范围是什么意思">动物医院诊疗活动范围是什么 动物医院诊疗活动范围是什么意思</a></li>
+                        <li class="py-2"><a href="/news/article-52050.htm" title="宠物领养协议书怎么生效图片 宠物领养协议书怎么生效图片大全">宠物领养协议书怎么生效图片 宠物领养协议书怎么生效图片大全</a></li>
+                        <li class="py-2"><a href="/news/article-46471.htm" title="Vue刷新当前页面几种方式">Vue刷新当前页面几种方式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
