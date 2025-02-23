@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-60407.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用 bitnami/postgresql-repmgr 镜像快速设置 PostgreSQL HA</title>
+        <meta name="description" content="什么是 PostgreSQL HA？ 此 PostgreSQL 集群解决方案包括 PostgreSQL 复制管理器(replication manager)，这是一种用于管理 PostgreSQL 集" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-60407.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="使用 bitnami/postgresql-repmgr 镜像快速设置 PostgreSQL HA" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/6e7376ba6ffae687ada1cac4126e2b6d.webp" />
+        <meta property="og:release_date" content="2025-02-21T09:20:12" />
+    <meta property="og:updated_time" content="2025-02-21T09:20:12" />
+        <meta property="og:description" content="什么是 PostgreSQL HA？ 此 PostgreSQL 集群解决方案包括 PostgreSQL 复制管理器(replication manager)，这是一种用于管理 PostgreSQL 集" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="使用 bitnami/postgresql-repmgr 镜像快速设置 PostgreSQL HA">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+            <a class="navbar-brand logo text-uppercase" href="/">
+                        <span>Hysteria2 Github</span>
+                        </a>
+            <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/client.htm" class="nav-link ">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                    </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            使用 bitnami/postgresql-repmgr 镜像快速设置 PostgreSQL HA                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/67802a528f951517940c88dd6dd27f5f.jpg" alt="使用 bitnami/postgresql-repmgr 镜像快速设置 PostgreSQL HA"></p> <h2 id="什么是-postgresql-ha">什么是 PostgreSQL HA？</h2> <p>此 PostgreSQL 集群解决方案包括 PostgreSQL 复制管理器(<code>replication manager</code>)，这是一种用于管理 PostgreSQL 集群上的复制(<code>replication</code>)和故障转移(<code>failover</code>)的开源工具。</p> <h2 id="获取此镜像">获取此镜像</h2> <p>获取 Bitnami PostgreSQL HA Docker 镜像的推荐方法是从<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://hub.docker.com/r/bitnami/postgresql-repmgr"  target="_blank" rel="nofollow">Docker Hub Registry</a> 中提取预构建的镜像。</p> <pre><code class="language-sh">$ docker pull bitnami/postgresql-repmgr:latest</code></pre> <p>要使用特定版本，您可以拉取版本化标签。 您可以在<code>Docker Hub Registry</code> 中查看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://hub.docker.com/r/bitnami/postgresql-repmgr/tags/"  target="_blank" rel="nofollow">可用版本的列表</a>。</p> <ul> <li><small><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://hub.docker.com/r/bitnami/postgresql-repmgr/tags/"  target="_blank" rel="nofollow">https://hub.docker.com/r/bitnami/postgresql-repmgr/tags/</a></small></li> </ul> <pre><code class="language-sh">$ docker pull bitnami/postgresql-repmgr:[TAG]</code></pre> <p>如果您愿意，您也可以自己构建镜像。</p> <pre><code class="language-sh">$ docker build -t bitnami/postgresql-repmgr:latest 'https://github.com/bitnami/bitnami-docker-postgresql-repmgr.git#master:14/debian-10'</code></pre> <h2 id="持久化您的应用程序">持久化您的应用程序</h2> <p>如果删除容器，所有数据都将丢失，下次运行镜像时，数据库将重新初始化。 为避免这种数据丢失，您应该挂载一个即使在容器被删除后仍将持续存在的卷。</p> <p>对于持久性，您应该在<code>/bitnami/postgresql</code> 路径上挂载一个目录。 如果挂载的目录是空的，它将在第一次运行时被初始化。</p> <pre><code class="language-sh">$ docker run \     -v /path/to/postgresql-repmgr-persistence:/bitnami/postgresql \     bitnami/postgresql-repmgr:latest</code></pre> <p>此存储库中的<code>docker-compose.yml</code> 文件已经配置了持久性。</p> <blockquote> <p>注意：由于这是一个非 root 容器，因此挂载的文件和目录必须具有 UID<code>1001</code> 的适当权限。</p> </blockquote> <h2 id="连接到其他容器">连接到其他容器</h2> <p>使用<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.docker.com/engine/userguide/networking/"  target="_blank" rel="nofollow">Docker 容器网络</a>，您的应用程序容器可以轻松访问在容器内运行的<code>PostgreSQL</code> 服务器，反之亦然。</p> <ul> <li><small><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.docker.com/engine/userguide/networking/"  target="_blank" rel="nofollow">https://docs.docker.com/engine/userguide/networking/</a></small></li> </ul> <p>连接到同一网络的容器可以使用容器名称作为主机名相互通信。</p> <h3 id="使用命令行">使用命令行</h3> <p>在此示例中，我们将创建一个<code>PostgreSQL</code> 客户端实例，该实例将连接到与客户端在同一<code>docker</code> 网络上运行的服务器实例。</p> <h4 id="step-1-创建-network">Step 1: 创建 network</h4> <pre><code class="language-sh">$ docker network create my-network --driver bridge</code></pre> <h4 id="step-2-在您的-network-中启动-postgresql-repmgr-容器">Step 2: 在您的 network 中启动 postgresql-repmgr 容器</h4> <p>使用<code>docker run</code> 命令的<code>--network &lt;NETWORK&gt;</code> 参数将容器附加到<code>my-network</code> 网络。</p> <pre><code class="language-sh">$ docker run --detach --rm --name pg-0 \   --network my-network \   --env REPMGR_PARTNER_NODES=pg-0 \   --env REPMGR_NODE_NAME=pg-0 \   --env REPMGR_NODE_NETWORK_NAME=pg-0 \   --env REPMGR_PRIMARY_HOST=pg-0 \   --env REPMGR_PASSWORD=repmgrpass \   --env POSTGRESQL_PASSWORD=secretpass \   bitnami/postgresql-repmgr:latest</code></pre> <h4 id="step-3-运行你的-postgresql-client-实例">Step 3: 运行你的 PostgreSQL client 实例</h4> <p>最后，我们创建一个新的容器实例来启动<code>PostgreSQL client</code> 并连接到上一步中创建的服务器：</p> <pre><code class="language-sh">$ docker run -it --rm \   --network my-network \   bitnami/postgresql:10 \   psql -h pg-0 -U postgres</code></pre> <h3 id="使用-docker-compose">使用 Docker Compose</h3> <p>如果未指定，<code>Docker Compose</code> 会自动设置一个新网络并将所有已部署的服务附加到该网络。 但是，我们将明确定义一个名为<code>my-network</code> 的新<code>bridge</code> 网络。 在此示例中，我们假设您希望从您自己的自定义应用程序镜像连接到<code>PostgreSQL</code> 服务器，该镜像在以下代码段中由服务名称<code>myapp</code> 标识。</p> <pre><code class="language-yaml">version: '2'  networks:   my-network:     driver: bridge  services:   pg-0:     image: 'bitnami/postgresql-repmgr:latest'     networks:       - my-network     environment:       - POSTGRESQL_PASSWORD=custompassword       - REPMGR_PASSWORD=repmgrpassword       - REPMGR_PRIMARY_HOST=pg-0       - REPMGR_NODE_NETWORK_NAME=pg-0       - REPMGR_NODE_NAME=pg-0       - REPMGR_PARTNER_NODES=pg-0   myapp:     image: 'YOUR_APPLICATION_IMAGE'     networks:       - my-network</code></pre> <blockquote> <p>重要的：</p> <ol> <li>请使用您的应用程序镜像更新上述代码段中的<em>YOUR_APPLICATION_IMAGE</em> 占位符</li> <li>在您的应用程序容器中，使用主机名<code>pg-0</code> 连接到<code>PostgreSQL</code> 服务器</li> </ol> </blockquote> <p>使用以下命令启动容器：</p> <pre><code class="language-sh">$ docker-compose up -d</code></pre> <h2 id="配置">配置</h2> <h3 id="初始化一个新实例">初始化一个新实例</h3> <p>第一次执行容器时，它将执行位于<code>/docker-entrypoint-initdb.d</code> 的扩展名为<code>.sh</code>、<code>.sql</code> 和<code>.sql.gz</code> 的文件。</p> <p>为了将您的自定义文件放入<code>docker</code> 镜像中，您可以将它们挂载为卷。</p> <h3 id="在首次运行时设置-root-和-repmgr-密码">在首次运行时设置 root 和 repmgr 密码</h3> <p>在上述命令中，您可能已经注意到<code>POSTGRESQL_PASSWORD</code> 和<code>REPMGR_PASSWORD</code> 环境变量的使用。 第一次运行镜像时传递<code>POSTGRESQL_PASSWORD</code> 环境变量会将<code>postgres</code> 用户的密码设置为<code>POSTGRESQL_PASSWORD</code> 的值（或<code>POSTGRESQL_PASSWORD_FILE</code> 中指定的文件内容）。同样，传递<code>REPMGR_PASSWORD</code> 环境变量将<code>repmgr</code> 用户的密码设置为<code>REPMGR_PASSWORD</code> 的值（或<code>REPMGR_PASSWORD_FILE</code> 中指定的文件内容）。</p> <pre><code class="language-sh">$ docker run --name pg-0 --env REPMGR_PASSWORD=repmgrpass --env POSTGRESQL_PASSWORD=secretpass bitnami/postgresql-repmgr:latest</code></pre> <p>或通过修改此存储库中存在的<code>docker-compose.yml</code> 文件：</p> <pre><code class="language-yaml">... services:   pg-0:   ...     environment: -      - POSTGRESQL_PASSWORD=adminpassword +      - POSTGRESQL_PASSWORD=password123 -      - REPMGR_PASSWORD=repmgrpassword +      - REPMGR_PASSWORD=password123   ...   pg-1:   ...   environment: -      - POSTGRESQL_PASSWORD=adminpassword +      - POSTGRESQL_PASSWORD=password123 -      - REPMGR_PASSWORD=repmgrpassword +      - REPMGR_PASSWORD=password123 ...</code></pre> <p>Note！<code>postgres</code> 和<code>repmgr</code> 用户都是超级用户，并且对<code>PostgreSQL</code> 数据库具有完全的管理访问权限。</p> <p>如果要为<code>postgres</code> 用户设置非特权用户和密码，请参阅在首次运行时创建数据库用户。</p> <h3 id="首次运行时创建数据库">首次运行时创建数据库</h3> <p>通过在第一次运行镜像时传递<code>POSTGRESQL_DATABASE</code> 环境变量，将创建一个数据库。 如果您的应用程序要求数据库已经存在，这将非常有用，您不必使用<code>PostgreSQL</code> 客户端手动创建数据库。</p> <pre><code class="language-sh">$ docker run --name pg-0 --env POSTGRESQL_DATABASE=my_database bitnami/postgresql-repmgr:latest</code></pre> <h3 id="首次运行时创建数据库用户">首次运行时创建数据库用户</h3> <p>您还可以创建一个受限数据库用户，该用户仅对使用<code>POSTGRESQL_DATABASE</code> 环境变量创建的数据库具有权限。 为此，请提供<code>POSTGRESQL_USERNAME</code> 环境变量。</p> <pre><code class="language-sh">$ docker run --name pg-0 --env POSTGRESQL_USERNAME=my_user --env POSTGRESQL_PASSWORD=password123 --env POSTGRESQL_DATABASE=my_database bitnami/postgresql-repmgr:latest</code></pre> <p>此存储库中的<code>docker-compose.yml</code> 文件已配置此设置。</p> <p>Note！指定<code>POSTGRESQL_USERNAME</code> 时，不会为<code>postgres</code> 用户分配密码，因此您无法以<code>postgres</code> 用户身份远程登录<code>PostgreSQL</code> 服务器。如果您仍想使用用户<code>postgres</code> 访问，请设置<code>POSTGRESQL_POSTGRES_PASSWORD</code> 环境变量（或<code>POSTGRESQL_POSTGRES_PASSWORD_FILE</code> 中指定的文件内容）。</p> <h3 id="使用流复制和-repmgr-设置-ha-postgresql-集群">使用流复制和 repmgr 设置 HA PostgreSQL 集群</h3> <p>使用以下环境变量，可以使用<code>Bitnami PostgreSQL HA Docker</code> 镜像轻松设置具有[流复制](Streaming replication)和<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://repmgr.org/"  target="_blank" rel="nofollow"><code>repmgr</code></a> 的<code>HA PostgreSQL</code> 集群：</p> <ul> <li>POSTGRESQL_PASSWORD：postgres 用户的密码。没有默认值。</li> <li>POSTGRESQL_PASSWORD_FILE：包含 postgres 用户密码的文件的路径。 这将覆盖 POSTGRESQL_PASSWORD 中指定的值。 没有默认值。</li> <li>REPMGR_USERNAME：<code>repmgr</code> 用户的用户名。默认为<code>repmgr</code>。</li> <li>REPMGR_PASSWORD_FILE：包含<code>repmgr</code> 用户密码的文件的路径。这将覆盖<code>REPMGR_PASSWORD</code> 中指定的值。 没有默认值。</li> <li>REPMGR_PASSWORD：<code>repmgr</code> 用户的密码。没有默认值。</li> <li>REPMGR_USE_PASSFILE：配置<code>repmgr</code> 以在其配置中使用<code>passfile</code> 和<code>PGPASSFILE</code> 而不是纯文本密码。</li> <li>REPMGR_PASSFILE_PATH：密码文件的位置，如果它不存在，它将使用<code>REPMGR</code> 凭据创建。</li> <li>REPMGR_PRIMARY_HOST：初始主节点的主机名。没有默认值。</li> <li>REPMGR_PARTNER_NODES：集群中的伙伴节点的逗号分隔列表。没有默认值。</li> <li>REPMGR_NODE_NAME：节点名称。没有默认值。</li> <li>REPMGR_NODE_NETWORK_NAME：节点主机名。没有默认值。</li> <li>REPMGR_PGHBA_TRUST_ALL：这将在生成的<code>pg_hba.conf</code> 中设置<code>auth-method</code>。仅当您使用带有<code>LDAP</code> 身份验证的<code>pgpool</code> 时才将其设置为<code>yes</code>。默认为<code>no</code>。</li> </ul> <p>在<code>HA PostgreSQL</code> 集群中，您可以拥有一个主节点和零个或多个备用节点。主节点处于读写模式，而备用节点处于只读模式。为获得最佳性能，建议将读取限制在备用节点。</p> <blockquote> <p>注意：对于 9.6 版之前的 Postgresql，REPMGR_USE_PASSFILE 和 REPMGR_PASSFILE_PATH 将被忽略。</p> <p>使用 REPMGR_PASSFILE_PATH 挂载外部密码文件时，还需要相应地配置 REPMGR_PASSWORD 和 REPMGR_USERNAME。</p> </blockquote> <h4 id="step-1-创建-network-1">Step 1: 创建 network</h4> <pre><code class="language-sh">$ docker network create my-network --driver bridge</code></pre> <h4 id="step-2-创建初始主节点">Step 2: 创建初始主节点</h4> <p>第一步是启动初始主节点：</p> <pre><code class="language-sh">$ docker run --detach --name pg-0 \   --network my-network \   --env REPMGR_PARTNER_NODES=pg-0,pg-1 \   --env REPMGR_NODE_NAME=pg-0 \   --env REPMGR_NODE_NETWORK_NAME=pg-0 \   --env REPMGR_PRIMARY_HOST=pg-0 \   --env REPMGR_PASSWORD=repmgrpass \   --env POSTGRESQL_PASSWORD=secretpass \   bitnami/postgresql-repmgr:latest</code></pre> <h4 id="step-3-创建备用节点">Step 3: 创建备用节点</h4> <p>接下来我们启动一个备用节点：</p> <pre><code class="language-sh">$ docker run --detach --name pg-1 \   --network my-network \   --env REPMGR_PARTNER_NODES=pg-0,pg-1 \   --env REPMGR_NODE_NAME=pg-1 \   --env REPMGR_NODE_NETWORK_NAME=pg-1 \   --env REPMGR_PRIMARY_HOST=pg-0 \   --env REPMGR_PASSWORD=repmgrpass \   --env POSTGRESQL_PASSWORD=secretpass \   bitnami/postgresql-repmgr:latest</code></pre> <p>使用这三个命令，您现在可以启动并运行一个两节点 PostgreSQL 主备流复制集群。 您可以通过添加/删除备用节点来扩展集群，而不会导致任何停机时间。</p> <blockquote> <p>注意：集群会完整地复制主节点，其中包括所有用户和数据库。</p> </blockquote> <p>如果主节点宕机，<code>repmgr</code> 将确保任何备用节点担任主节点，从而保证高可用性。</p> <blockquote> <p>注意：集群中其他节点的配置需要更新，以便它们知道它们。这将需要重新启动旧节点，以适应 REPMGR_PARTNER_NODES 环境变量。</p> </blockquote> <p>使用<code>Docker Compose</code>，可以使用此存储库中的<code>docker-compose.yml</code> 文件设置<code>HA PostgreSQL</code> 集群：</p> <pre><code class="language-sh">$ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-postgresql-repmgr/master/docker-compose.yml &gt; docker-compose.yml $ docker-compose up -d</code></pre> <h3 id="保护-postgresql-流量">保护 PostgreSQL 流量</h3> <p><code>PostgreSQL</code> 支持使用<code>SSL/TLS</code> 协议对连接进行加密。如果您希望启用此可选功能，您可以使用以下环境变量来配置应用程序：</p> <ul> <li>POSTGRESQL_ENABLE_TLS：是否为流量启用<code>TLS</code>。默认为<code>no</code>。</li> <li>POSTGRESQL_TLS_CERT_FILE：包含<code>TLS</code> 流量证书文件的文件。没有默认值。</li> <li>POSTGRESQL_TLS_KEY_FILE：包含证书密钥的文件。没有默认值。</li> <li>POSTGRESQL_TLS_CA_FILE：包含证书<code>CA</code> 的文件。如果提供，<code>PostgreSQL</code> 将通过向<code>TLS/SSL</code> 客户端请求证书来对其进行身份验证（请参阅<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.postgresql.org/docs/9.6/auth-methods.html"  target="_blank" rel="nofollow">ref</a>）。没有默认值。</li> <li>POSTGRESQL_TLS_CRL_FILE：包含证书吊销列表的文件。没有默认值。</li> <li>POSTGRESQL_TLS_PREFER_SERVER_CIPHERS：是否使用服务器的<code>TLS</code> 密码首选项而不是客户端的。默认为<code>yes</code>。</li> </ul> <p>启用<code>TLS</code> 时，<code>PostgreSQL</code> 默认支持标准流量和加密流量，但更喜欢后者。下面是一些关于如何快速设置<code>TLS</code> 流量的示例：</p> <ol> <li>使用<code>docker run</code></li> </ol> <pre><code class="language-sh">$ docker run \     -v /path/to/certs:/opt/bitnami/postgresql/certs \     -e POSTGRESQL_ENABLE_TLS=yes \     -e POSTGRESQL_TLS_CERT_FILE=/opt/bitnami/postgresql/certs/postgres.crt \     -e POSTGRESQL_TLS_KEY_FILE=/opt/bitnami/postgresql/certs/postgres.key \     bitnami/postgresql-repmgr:latest</code></pre> <ol start="2"> <li>修改此存储库中存在的<code>docker-compose.yml</code> 文件：</li> </ol> <pre><code class="language-sh">services:   pg-0:   ...     environment:       ...       - POSTGRESQL_ENABLE_TLS=yes       - POSTGRESQL_TLS_CERT_FILE=/opt/bitnami/postgresql/certs/postgres.crt       - POSTGRESQL_TLS_KEY_FILE=/opt/bitnami/postgresql/certs/postgres.key     ...     volumes:       ...       - /path/to/certs:/opt/bitnami/postgresql/certs   ...</code></pre> <p>或者，您也可以在自定义配置文件中提供此配置。</p> <h3 id="配置文件">配置文件</h3> <p>该镜像在<code>/opt/bitnami/repmgr/conf/</code> 和<code>/opt/bitnami/postgresql/conf/</code> 中查找<code>repmgr.conf</code>、<code>postgresql.conf</code> 和<code>pg_hba.conf</code> 文件。您可以在<code>/bitnami/repmgr/conf/</code> 挂载一个卷，并复制/编辑<code>/path/to/custom-conf/</code> 中的配置文件。 如果<code>/bitnami/repmgr/conf/</code> 为空，默认配置将填充到<code>conf/</code> 目录。</p> <pre><code class="language-sh">/path/to/custom-conf/ └── postgresql.conf</code></pre> <p>由于带有<code>Replication manager</code> 镜像的<code>PostgreSQL</code> 是非 root 用户，因此您需要为主机中的挂载目录设置适当的权限：</p> <pre><code class="language-sh">$ sudo chgrp -R root /path/to/custom-conf/ $ sudo chmod -R g+rwX /path/to/custom-conf/</code></pre> <h4 id="step-1-运行-postgresql-镜像">Step 1: 运行 PostgreSQL 镜像</h4> <p>运行 PostgreSQL 镜像，从您的主机挂载一个目录。</p> <pre><code class="language-sh">$ docker run --name pg-0 \     -v /path/to/custom-conf/:/bitnami/repmgr/conf/ \     bitnami/postgresql-repmgr:latest</code></pre> <p>或者使用<code>Docker Compose</code>：</p> <pre><code class="language-yaml">version: '2'  services:   pg-0:     image: bitnami/postgresql-repmgr:latest     ports:       - '5432:5432'     volumes:       - /path/to/custom-conf/:/bitnami/repmgr/conf/   pg-1:     image: bitnami/postgresql-repmgr:latest     ports:       - '5432:5432'     volumes:       - /path/to/custom-conf/:/bitnami/repmgr/conf/</code></pre> <h4 id="step-2-编辑配置">Step 2: 编辑配置</h4> <p>使用您喜欢的编辑器编辑主机上的配置。</p> <pre><code class="language-sh">vi /path/to/custom-conf/postgresql.conf</code></pre> <h4 id="step-3-重启-postgresql">Step 3: 重启 PostgreSQL</h4> <p>更改配置后，重新启动<code>PostgreSQL</code> 容器以使更改生效。</p> <pre><code class="language-sh">$ docker restart pg-0</code></pre> <p>或者使用<code>Docker Compose</code>：</p> <pre><code class="language-sh">$ docker-compose restart pg-0 $ docker-compose restart pg-1</code></pre> <p>有关配置选项的完整列表，请参阅<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.postgresql.org/docs/10/static/runtime-config.html"  target="_blank" rel="nofollow">服务器配置手册</a>。</p> <ul> <li><small><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.postgresql.org/docs/10/static/runtime-config.html"  target="_blank" rel="nofollow">http://www.postgresql.org/docs/10/static/runtime-config.html</a></small></li> </ul> <p>允许从默认<code>postgresql.conf</code> 以外的文件加载设置。</p> <p>除了使用自定义的<code>repmgr.conf</code>、<code>postgresql.conf</code> 或<code>pg_hba.conf</code>，您还可以在<code>/bitnami/postgresql/conf/</code> 的卷中包含<code>conf.d</code> 目录中以<code>.conf</code> 结尾的文件。为此，默认的<code>postgresql.conf</code> 包含以下部分：</p> <pre><code class="language-sh">##------------------------------------------------------------------------------ ## CONFIG FILE INCLUDES ##------------------------------------------------------------------------------  ## These options allow settings to be loaded from files other than the ## default postgresql.conf.  include_dir = 'conf.d'  # Include files ending in '.conf' from directory 'conf.d'</code></pre> <p>如果您使用自定义<code>postgresql.conf</code>，您应该在配置文件中创建（或取消注释）上述部分，在这种情况下，结构应该类似于</p> <pre><code class="language-sh">/path/to/custom-conf/ └── postgresql.conf /path/to/extra-custom-conf/ └── extended.conf</code></pre> <p>请记住为主机中的挂载目录设置适当的权限：</p> <pre><code class="language-sh">$ sudo chgrp -R root /path/to/extra-custom-conf/ $ sudo chmod -R g+rwX /path/to/extra-custom-conf/</code></pre> <h4 id="step-1-运行-postgresql-镜像-1">Step 1: 运行 PostgreSQL 镜像</h4> <p>运行<code>PostgreSQL</code> 镜像，从您的主机挂载一个目录。</p> <pre><code class="language-sh">$ docker run --name pg-0 \     -v /path/to/extra-custom-conf/:/bitnami/postgresql/conf/conf.d/ \     -v /path/to/custom-conf/:/bitnami/repmgr/conf/ \     bitnami/postgresql-repmgr:latest</code></pre> <p>或者使用<code>Docker Compose</code>：</p> <pre><code class="language-yaml">version: '2'  services:   pg-0:     image: bitnami/postgresql-repmgr:latest     ports:       - '5432:5432'     volumes:       - /path/to/extra-custom-conf/:/bitnami/postgresql/conf/conf.d/       - /path/to/custom-conf/:/bitnami/repmgr/conf/   pg-1:     image: bitnami/postgresql-repmgr:latest     ports:       - '5432:5432'     volumes:       - /path/to/extra-custom-conf/:/bitnami/postgresql/conf/conf.d/       - /path/to/custom-conf/:/bitnami/repmgr/conf/</code></pre> <h4 id="step-2-编辑配置-1">Step 2: 编辑配置</h4> <p>使用您喜欢的编辑器编辑主机上的配置。</p> <pre><code class="language-sh">vi /path/to/extra-custom-conf/extended.conf</code></pre> <h4 id="step-3-重启-postgresql-1">Step 3: 重启 PostgreSQL</h4> <p>更改配置后，重新启动<code>PostgreSQL</code> 容器以使更改生效。</p> <pre><code class="language-sh">$ docker restart pg-0</code></pre> <p>或者使用 Docker Compose：</p> <pre><code class="language-sh">$ docker-compose restart pg-0 $ docker-compose restart pg-1</code></pre> <h3 id="环境变量">环境变量</h3> <p>请在下表中查看<code>Bitnami PostgreSQL HA</code> 容器中可用的环境变量列表：</p> <table> <thead> <tr> <th style="text-align: left">Environment Variable</th> <th style="text-align: left">Default value</th> </tr> </thead> <tbody> <tr> <td style="text-align: left">REPMGR_NODE_ID</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_NODE_ID_START_SEED</td> <td style="text-align: left"><code>1000</code></td> </tr> <tr> <td style="text-align: left">REPMGR_NODE_NAME</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_NODE_NETWORK_NAME</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_NODE_PRIORITY</td> <td style="text-align: left"><code>100</code></td> </tr> <tr> <td style="text-align: left">REPMGR_PARTNER_NODES</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_PRIMARY_HOST</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_NODE_LOCATION</td> <td style="text-align: left"><code>default</code></td> </tr> <tr> <td style="text-align: left">REPMGR_PRIMARY_PORT</td> <td style="text-align: left"><code>5432</code></td> </tr> <tr> <td style="text-align: left">REPMGR_PORT_NUMBER</td> <td style="text-align: left"><code>5432</code></td> </tr> <tr> <td style="text-align: left">REPMGR_LOG_LEVEL</td> <td style="text-align: left"><code>NOTICE</code></td> </tr> <tr> <td style="text-align: left">REPMGR_START_OPTIONS</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_CONNECT_TIMEOUT</td> <td style="text-align: left"><code>5</code></td> </tr> <tr> <td style="text-align: left">REPMGR_RECONNECT_ATTEMPTS</td> <td style="text-align: left"><code>3</code></td> </tr> <tr> <td style="text-align: left">REPMGR_RECONNECT_INTERVAL</td> <td style="text-align: left"><code>5</code></td> </tr> <tr> <td style="text-align: left">REPMGR_USE_REPLICATION_SLOTS</td> <td style="text-align: left"><code>1</code></td> </tr> <tr> <td style="text-align: left">REPMGR_MASTER_RESPONSE_TIMEOUT</td> <td style="text-align: left"><code>20</code></td> </tr> <tr> <td style="text-align: left">REPMGR_DEGRADED_MONITORING_TIMEOUT</td> <td style="text-align: left"><code>5</code></td> </tr> <tr> <td style="text-align: left">REPMGR_USERNAME</td> <td style="text-align: left"><code>repmgr</code></td> </tr> <tr> <td style="text-align: left">REPMGR_DATABASE</td> <td style="text-align: left"><code>repmgr</code></td> </tr> <tr> <td style="text-align: left">REPMGR_PASSWORD</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_PASSWORD_FILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">REPMGR_FENCE_OLD_PRIMARY</td> <td style="text-align: left"><code>no</code></td> </tr> <tr> <td style="text-align: left">REPMGR_CHILD_NODES_CHECK_INTERVAL</td> <td style="text-align: left"><code>5</code></td> </tr> <tr> <td style="text-align: left">REPMGR_CHILD_NODES_CONNECTED_MIN_COUNT</td> <td style="text-align: left"><code>1</code></td> </tr> <tr> <td style="text-align: left">REPMGR_CHILD_NODES_DISCONNECT_TIMEOUT</td> <td style="text-align: left"><code>30</code></td> </tr> <tr> <td style="text-align: left">REPMGR_USE_PASSFILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_USERNAME</td> <td style="text-align: left"><code>postgres</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_DATABASE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_PASSWORD</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_PASSWORD_FILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_POSTGRES_PASSWORD</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_POSTGRES_PASSWORD_FILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_PORT_NUMBER</td> <td style="text-align: left"><code>5432</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_INITDB_ARGS</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_PGCTLTIMEOUT</td> <td style="text-align: left"><code>60</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_SHUTDOWN_MODE</td> <td style="text-align: left"><code>fast</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_ENABLE_TLS</td> <td style="text-align: left"><code>no</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_TLS_CERT_FILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_TLS_KEY_FILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_TLS_CA_FILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_TLS_CRL_FILE</td> <td style="text-align: left"><code>nil</code></td> </tr> <tr> <td style="text-align: left">POSTGRESQL_TLS_PREFER_SERVER_CIPHERS</td> <td style="text-align: left"><code>yes</code></td> </tr> </tbody> </table> <h2 id="日志">日志</h2> <p><code>Bitnami PostgreSQL HA Docker</code> 镜像将容器日志发送到<code>stdout</code>。查看日志：</p> <pre><code class="language-console">$ docker logs pg-0</code></pre> <p>如果您希望以不同的方式使用容器日志，则可以使用<code>--log-driver</code> 选项配置容器<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.docker.com/engine/admin/logging/overview/"  target="_blank" rel="nofollow">logging driver</a>。在默认配置中，<code>docker</code> 使用<code>json-file</code> driver。</p> <ul> <li><small><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.docker.com/engine/admin/logging/overview/"  target="_blank" rel="nofollow">https://docs.docker.com/engine/admin/logging/overview/</a></small></li> </ul> <h2 id="维护">维护</h2> <h3 id="升级这个镜像">升级这个镜像</h3> <p><code>Bitnami</code> 提供了<code>PostgreSQL HA</code> 的最新版本，包括安全补丁，这些补丁在上游发布后很快就会发布。我们建议您按照以下步骤升级容器。</p> <h4 id="step-1-获取更新的镜像">Step 1: 获取更新的镜像</h4> <pre><code class="language-console">$ docker pull bitnami/postgresql-repmgr:latest</code></pre> <p>或者，如果您使用的是<code>Docker Compose</code>，请将<code>image</code> 属性的值更新为<code>bitnami/postgresql-repmgr:latest</code>。</p> <h4 id="step-2-停止正在运行的容器">Step 2: 停止正在运行的容器</h4> <p>使用命令停止当前运行的容器</p> <pre><code class="language-console">$ docker stop pg-0</code></pre> <p>或者使用 Docker Compose：</p> <pre><code class="language-console">$ docker-compose stop pg-0 $ docker-compose stop pg-1</code></pre> <p>接下来，使用以下命令对持久卷<code>/path/to/postgresql-persistence</code> 进行快照：</p> <pre><code class="language-console">$ rsync -a /path/to/postgresql-persistence /path/to/postgresql-persistence.bkp.$(date +%Y%m%d-%H.%M.%S)</code></pre> <h4 id="step-3-移除当前运行的容器">Step 3: 移除当前运行的容器</h4> <pre><code class="language-console">$ docker rm -v pg-0</code></pre> <p>或者使用 Docker Compose：</p> <pre><code class="language-console">$ docker-compose rm -v pg-0 $ docker-compose rm -v pg-1</code></pre> <h4 id="step-4-运行新镜像">Step 4: 运行新镜像</h4> <p>从新镜像重新创建容器。</p> <pre><code class="language-console">$ docker run --name pg-0 bitnami/postgresql-repmgr:latest</code></pre> <p>或者使用 Docker Compose：</p> <pre><code class="language-console">$ docker-compose up pg-0 $ docker-compose up pg-1</code></pre> <h2 id="更多">更多</h2> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/Hbs5YQ2oKcnMKHzVWrp4Tw"  target="_blank" rel="nofollow">Pgpool-II 4.3 中文手册-前言</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/a1l51jpMR_ObQwmGAdI8-w"  target="_blank" rel="nofollow">pgpool-II 4.3 中文手册 - 入门教程</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/1X65AAs8O1qcddf5wqpRRQ"  target="_blank" rel="nofollow">「在 Kubernetes 上运行 Pgpool-Il」实现 PostgreSQL 查询(读)负载均衡和连接池</a></li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-60406.htm">SpringBoot获取数据库datetime类型数据在前端显示为时间戳问题及解决方案</a></p>
+                                        <p>下一个：<a href="/news/article-60975.htm">动物疫苗需要冷藏吗多少度保存呢（动物疫苗运输与储存规范）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-30-sing-hysteria-windows.htm" title="12月30日→18.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月30日→18.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29902.htm" title="猫粮加工厂需要什么设备（猫粮加工厂要哪些手续）">猫粮加工厂需要什么设备（猫粮加工厂要哪些手续）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-node-subscribe.htm" title="1月1日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月1日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-41501.htm" title="Vite2+Vue3+ts的eslint设置踩坑">Vite2+Vue3+ts的eslint设置踩坑</a></li>
+                        <li class="py-2"><a href="/news/article-47944.htm" title="宠物助理医师报名条件跨专业（宠物医师助理怎么样）">宠物助理医师报名条件跨专业（宠物医师助理怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-19256.htm" title="反射获取class对象和类实例">反射获取class对象和类实例</a></li>
+                        <li class="py-2"><a href="/news/article-19257.htm" title="重庆在哪领养猫（重庆哪里可以领养宠物猫）">重庆在哪领养猫（重庆哪里可以领养宠物猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-high-speed-nodes.htm" title="12月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月10日→18.1M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-hysteria-node-share.htm" title="2月11日→18.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">2月11日→18.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-sing-hysteria-windows.htm" title="11月23日→19.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">11月23日→19.7M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
