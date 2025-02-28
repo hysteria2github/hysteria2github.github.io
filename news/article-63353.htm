@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-63353.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redis 主从同步原理解析</title>
+        <meta name="description" content="文章目录    前言 增量同步 快照同步 无盘复制 Wait 指令     前言 Redis 同步支持主从同步和从从同步，从从同步功能是Redis 后续版本增加的功能，为了减轻主库的同步负担。这里我们" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-63353.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="Redis 主从同步原理解析" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/a2f71a46527dc2315997af2cdfd5e976.webp" />
+        <meta property="og:release_date" content="2025-02-26T08:34:35" />
+    <meta property="og:updated_time" content="2025-02-26T08:34:35" />
+        <meta property="og:description" content="文章目录    前言 增量同步 快照同步 无盘复制 Wait 指令     前言 Redis 同步支持主从同步和从从同步，从从同步功能是Redis 后续版本增加的功能，为了减轻主库的同步负担。这里我们" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Redis 主从同步原理解析">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+            <a class="navbar-brand logo text-uppercase" href="/">
+                        <span>Hysteria2 Github</span>
+                        </a>
+            <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/client.htm" class="nav-link ">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                    </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            Redis 主从同步原理解析                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-github-gist"> <div class="toc"> <h3>文章目录</h3> <ul> <li> <ul> <li><a href="#_1" rel="nofollow">前言</a></li> <li><a href="#_4" rel="nofollow">增量同步</a></li> <li><a href="#_9" rel="nofollow">快照同步</a></li> <li><a href="#_15" rel="nofollow">无盘复制</a></li> <li><a href="#Wait__18" rel="nofollow">Wait 指令</a></li> </ul> </li> </ul> </div> <h2><a id="_1" rel="nofollow"></a>前言</h2> <p>Redis 同步支持主从同步和从从同步，从从同步功能是Redis 后续版本增加的功能，为了减轻主库的同步负担。这里我们主要讨论主从同步。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/421c824bb4e9b9379c82dc769c279c04.jpg" alt="Redis 主从同步原理解析"></p> <h2><a id="_4" rel="nofollow"></a>增量同步</h2> <p>Redis 同步的是指令流，主节点会将那些对自己的状态产生修改性影响的指令记录在本地的内存 buffer 中，然后异步将 buffer 中的指令同步到从节点，从节点一边执行同步的指令流来达到和主节点一样的状态，一遍向主节点反馈自己同步到哪里了(偏移量)。<br /> 因为内存的 buffer 是有限的，所以 Redis 主库不能将所有的指令都记录在内存 buffer 中。Redis 的复制内存 buffer 是一个定长的环形数组，如果数组内容满了，就会从头开始覆盖前面的内容。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/9c1b59d59134480250c58a7a5c540e45.jpg" alt="Redis 主从同步原理解析"><br /> 如果因为网络状况不好，从节点在短时间内无法和主节点进行同步，那么当网络状况恢复时，Redis 的主节点中那些没有同步的指令在 buffer 中有可能已经被后续的指令覆盖掉了，从节点将无法直接通过指令流来进行同步，这个时候就需要用到更加复杂的同步机制——快照同步。</p> <h2><a id="_9" rel="nofollow"></a>快照同步</h2> <p>快照同步是一个非常耗费资源的操作，它首先需要在主库上进行一次 bgsave 将当前内存的数据全部快照到磁盘文件中，然后再将快照文件的内容全部传送到从节点。从节点将快照文件接受完毕后，立即执行一次全量加载，加载之前先要将当前内存的数据清空。加载完毕后通知主节点继续进行增量同步。<br /> 在整个快照同步进行的过程中，主节点的复制 buffer 还在不停的往前移动，如果快照同步的时间过长或者复制 buffer 太小，都会导致同步期间的增量指令在复制 buffer 中被覆盖，这样就会导致快照同步完成后无法进行增量复制，然后会再次发起快照同步，如此极有可能会陷入快照同步的死循环。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/d8fbf4abb8a09c5f678a57d15d26d1f2.jpg" alt="Redis 主从同步原理解析"><br /> 所以务必配置一个合适的复制 buffer 大小参数，避免快照复制的死循环。<br /> 当从节点刚刚加入到集群时，它必须先要进行一次快照同步，同步完成后再继续进行增量同步。</p> <h2><a id="_15" rel="nofollow"></a>无盘复制</h2> <p>主节点在进行快照同步时，会进行很重的文件 IO 操作，特别是对于非 SSD 磁盘存储时，快照会对系统的负载产生较大影响。特别是当系统正在进行 AOF 的 fsync 操作时如果发生快照，fsync 将会被推迟执行，这就会严重影响主节点的服务效率。<br /> 所以从 Redis 2.8.18 版开始支持无盘复制。所谓无盘复制是指主服务器直接通过 SOCKET 将快照内容发送到从节点，生成快照是一个遍历的过程，主节点会一边遍历内存，一遍将序列化的内容发送到从节点，从节点还是跟之前一样，先将接收到的内容存储到磁盘文件中，再进行一次性加载。</p> <h2><a id="Wait__18" rel="nofollow"></a>Wait 指令</h2> <p>Redis 的复制是异步进行的，wait 指令可以让异步复制变身同步复制，确保系统的强一致性(不严格)。wait 指令是Redis3.0 版本以后才出现的。<br /> wait 提供两个参数，第一个参数是从库的数量 N，第二个参数是时间 t，以毫秒为单位。它表示等待 wait 指令之前的所有写操作同步到 N 个从库(也就是确保 N 个从库的同步没有滞后)，最多等待时间 t。如果时间 t=0，表示无限等待直到 N 个从库同步完成达成一致。<br /> 假设此时出现了网络分区，wait 指令第二个参数时间 t=0，主从同步无法继续进行，wait 指令会永远阻塞，Redis 服务器将丧失可用性。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-63352.htm">云原生之Docker实战使用docker部署Jellyfin个人影音服务器</a></p>
+                                        <p>下一个：<a href="/news/article-63959.htm">重庆宠物领养网免费平台官网电话（重庆宠物领养重庆宠物赠送）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-60975.htm" title="动物疫苗需要冷藏吗多少度保存呢（动物疫苗运输与储存规范）">动物疫苗需要冷藏吗多少度保存呢（动物疫苗运输与储存规范）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-hysteria-node-github.htm" title="2月9日→22.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">2月9日→22.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21552.htm" title="如何在IDEA 中配置 Maven">如何在IDEA 中配置 Maven</a></li>
+                        <li class="py-2"><a href="/news/article-44489.htm" title="动物疫苗多长时间内打一次合适 动物的疫苗多久打一次">动物疫苗多长时间内打一次合适 动物的疫苗多久打一次</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-hysteria-node.htm" title="12月12日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址">12月12日→20.6M/S|2024年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40511.htm" title="宠物粮市场分析论文怎么写好（宠物粮市场开发方案）">宠物粮市场分析论文怎么写好（宠物粮市场开发方案）</a></li>
+                        <li class="py-2"><a href="/news/article-37551.htm" title="学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈">学习JVM-虚拟机栈，程序计数器和本地方法接口与本地方法栈</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-25-free-node-subscribe.htm" title="2月25日→21.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">2月25日→21.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51532.htm" title="小孩被猫抓伤了多久过安全期（小孩被猫抓伤多久会发病）">小孩被猫抓伤了多久过安全期（小孩被猫抓伤多久会发病）</a></li>
+                        <li class="py-2"><a href="/news/article-22923.htm" title="Redis4-缓存过期和删除策略">Redis4-缓存过期和删除策略</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
