@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-74250.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Kafka消息传递可靠性分析</title>
+        <meta name="description" content="如果MQ没有类似数据库事务结构和保证，是不可能达到消息投递100%可靠的，极端情况下消息投递要么丢失或重复。 下面咋们从producer，broker，consumer的角度分析一下Kafka中会出现" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-74250.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="Apache Kafka消息传递可靠性分析" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/2f2c2ec2ad3413f07f302ae4da2d9978.webp" />
+        <meta property="og:release_date" content="2025-03-15T07:20:11" />
+    <meta property="og:updated_time" content="2025-03-15T07:20:11" />
+        <meta property="og:description" content="如果MQ没有类似数据库事务结构和保证，是不可能达到消息投递100%可靠的，极端情况下消息投递要么丢失或重复。 下面咋们从producer，broker，consumer的角度分析一下Kafka中会出现" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Apache Kafka消息传递可靠性分析">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+            <a class="navbar-brand logo text-uppercase" href="/">
+                        <span>Hysteria2 Github</span>
+                        </a>
+            <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/client.htm" class="nav-link ">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                    </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            Apache Kafka消息传递可靠性分析                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><span style="font-size:14px">如果MQ没有类似数据库事务结构和保证，是不可能达到消息投递100%可靠的，极端情况下消息投递要么丢失或重复。</span></p> <p><span style="font-size:14px">下面咋们</span><span style="font-size:14px">从producer，broker，consumer的角度</span><span style="font-size:14px">分析一下Kafka中会出现哪些情况：</span></p> </h1> <p><span style="font-size:14px"><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220821/ad0ce1e050c5c8616af17d8ba9999253.jpg" alt="Apache Kafka消息传递可靠性分析" width="414" height="224"><br /></span></p> <p><span style="font-size:14px">目前生产者发送消息(</span><span style="font-size:14px">request.required.acks</span><span style="font-size:14px">)有三种方式。</span></p> <p class="p1" style="font-size:14px"><span style="font-size:14px">acks =</span><span class="s1">0</span>: producer不会等待broker发送ack ，因为发送消息网络超时或broker crash(1.Partition的Leader还没有commit消息 2.Leader与Follower数据不同步)，既有可能丢失也可能会重发。</p> <p class="p1" style="font-size:14px"><span style="font-size:14px">acks =</span><span class="s1">1</span>: 当leader接收到消息之后发送ack，丢会重发，丢的概率很小</p> <p class="p1" style="font-size:14px">acks = -1: 当所有的follower都同步消息成功后发送ack. &nbsp;丢失消息可能性比较低。</p> <p class="p1" style="font-size:14px"></p> </h1> <p class="p1"><span style="font-size:14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/2e667fd0a8fd1ecc3566c10687aecfba.jpg" alt="Apache Kafka消息传递可靠性分析" width="412" height="224"><br /></span></p> <p class="p1" style="font-size:14px">Kafka中有两种consumer接口，分别为Low<span style="font-size:14px">-level API</span>和High-level<span style="font-size:14px">API</span></p> <p class="p1" style="font-size:14px">(1).<span style="font-size:14px">Low</span><span style="font-size:14px">-level API &nbsp;SimpleConsumer</span></p> <p class="p1" style="font-size:14px"><span style="font-size:14px"></span></p> <p class="p1"><span style="font-size:14px">这套接口比较复杂的，使用者必须要考虑很多事情，优点就是对Kafka可以有完全的控制。</span></p> <p class="p1">(2).<span style="font-size:14px">High-level</span><span style="font-size:14px">API&nbsp;ZookeeperConsumerConnector</span></p> <p class="p1"><span style="font-size:14px"></span></p> <p class="p1"><span style="font-size:14px">High-level&nbsp;API使用比较简单，已经封装了对partition和offset的管理，默认是会定期自动commit offset，这样可能会丢数据的，因为consumer可能拿到数据没有处理完crash。 High-level API接口的特点，自动管理，使用简单，但是对Kafka的控制不够灵活。</span></p> <p class="p1"></p> </h1> <p class="p1"> <p class="p1"><span style="font-size:14px">&nbsp; &nbsp; (1). 对于broker，落盘的数据，除非磁盘坏了，一般不会丢的。</span></p> <p class="p1"><span style="font-size:14px">&nbsp; &nbsp; (2). &nbsp;对于内存脏(没有flush磁盘)数据，broker重启会丢.<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 可以通过log.flush.interval.messages和log.flush.interval.ms来配置flush间隔，interval大丢的数据多些，小会影响性能<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 但在0.8.x版本以后，可以通过replica机制保证数据不丢，代价就是需要更多资源，尤其是磁盘资源，kafka当前支持GZip和Snappy压缩，来缓解这个问题。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是否使用replica取决于在可靠性和资源代价之间的平衡。</span></p> <p></p> <p class="p1"></p> <p class="p1"><span style="font-size:18px; color:#009900">总结</span></p> <p class="p1"> <p class="p1"><span style="font-size:14px">Kafka只是能保证at-least once消息语义，即数据是可能重复的，这个在应用上需要可以容忍，<br /> 对于Kafka consumer，一般情况下推荐使用high-level API接口，最好不要直接使用low-level API，自己写起来比较麻烦和困难。</span></p> <p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73595.htm">微信小程序自定义导航栏组件(完美适配手机),可自定义实现任何你想要的功能</a></p>
+                                        <p>下一个：<a href="/news/article-74251.htm">北京免费领养猫咪平台（北京领养猫机构在哪儿）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-free-hysteria-node.htm" title="2月3日→21.2M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">2月3日→21.2M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-58092.htm" title="北京爱宠康动物医院怎么样（北京爱宠康动物医院怎么样知乎）">北京爱宠康动物医院怎么样（北京爱宠康动物医院怎么样知乎）</a></li>
+                        <li class="py-2"><a href="/news/article-43508.htm" title="猫咪疫苗三针要隔多少天（猫咪的三针疫苗间隔多久）">猫咪疫苗三针要隔多少天（猫咪的三针疫苗间隔多久）</a></li>
+                        <li class="py-2"><a href="/news/article-63960.htm" title="养猫打疫苗需要多少（养猫打疫苗需要多少钱一共几针）">养猫打疫苗需要多少（养猫打疫苗需要多少钱一共几针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-21-free-high-speed-nodes.htm" title="2月21日→22.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">2月21日→22.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-free-subscribe-node.htm" title="1月28日→20.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月28日→20.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-65816.htm" title="宠物领养网页设计 宠物领养网页设计方案">宠物领养网页设计 宠物领养网页设计方案</a></li>
+                        <li class="py-2"><a href="/news/article-69644.htm" title="动物疫苗的正确使用方法是哪些呢（动物疫苗的正确使用方法是哪些呢英语）">动物疫苗的正确使用方法是哪些呢（动物疫苗的正确使用方法是哪些呢英语）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-today-hysteria-node.htm" title="3月1日→18M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月1日→18M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39021.htm" title="58同城免费领养小猫宜春（58同城宠物猫领养）">58同城免费领养小猫宜春（58同城宠物猫领养）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
