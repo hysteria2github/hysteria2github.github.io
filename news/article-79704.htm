@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-79704.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Virtual Desktop创建配置管理详解</title>
+        <meta name="description" content="一，引言 Azure 虚拟创面是一项 Azure 服务，可以让我们管理： 　　1）VDI（虚拟桌面基础架构） 　　2）云端的 RDSH：RDSH 是 RDS（远程桌面服务）中的一个角色。这些类型的服务" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-79704.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="Azure Virtual Desktop创建配置管理详解" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/669890a66b100a13589c6625a6a24a6d.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:23:17" />
+    <meta property="og:updated_time" content="2025-03-23T08:23:17" />
+        <meta property="og:description" content="一，引言 Azure 虚拟创面是一项 Azure 服务，可以让我们管理： 　　1）VDI（虚拟桌面基础架构） 　　2）云端的 RDSH：RDSH 是 RDS（远程桌面服务）中的一个角色。这些类型的服务" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Azure Virtual Desktop创建配置管理详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+            <a class="navbar-brand logo text-uppercase" href="/">
+                        <span>Hysteria2 Github</span>
+                        </a>
+            <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/client.htm" class="nav-link ">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                    </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            Azure Virtual Desktop创建配置管理详解                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<h2>一，引言</h2> <p>Azure 虚拟创面是一项 Azure 服务，可以让我们管理：</p> <p>　　1）VDI（虚拟桌面基础架构）</p> <p>　　2）云端的 RDSH：<span style="box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; color: rgba(64, 66, 73, 1); font-family: Roboto, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: inherit">RDSH 是 RDS（远程桌面服务）中的一个角色。</span><span style="box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; color: rgba(64, 66, 73, 1); font-family: Roboto, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: inherit">这些类型的服务器用于托管用户远程访问的 Windows 桌面或应用程序。</span></p> <p><span style="color: rgba(64, 66, 73, 1); font-family: Roboto, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif"><span style="font-size: 16px">为此我们可以通过使用 Azure Virtual Desktop 做那些操作呢？？</span></span></p> <ul style="box-sizing: inherit; margin: 16px 0 16px 38px; padding: 0; list-style: none; outline-color: inherit; color: rgba(23, 23, 23, 1); font-family: &quot;Segoe UI&quot;, SegoeUI, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 16px"> <li style="box-sizing: inherit; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; outline: 0 inherit">设置多会话 Windows 10 部署，使整个 Windows 10 操作系统获得可伸缩性</li> <li style="box-sizing: inherit; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; outline: 0 inherit">虚拟化 Microsoft 365 应用企业版，并对其进行优化，使其可在多用户虚拟场景中运行</li> <li style="box-sizing: inherit; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; outline: 0 inherit">为 Windows 7 虚拟桌面提供免费的扩展安全更新</li> <li style="box-sizing: inherit; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; outline: 0 inherit">将现有的远程桌面服务 (RDS) 和 Windows Server 桌面与应用迁移到任何计算机</li> <li style="box-sizing: inherit; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; outline: 0 inherit">虚拟化桌面和应用</li> <li style="box-sizing: inherit; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; outline: 0 inherit">使用统一的管理体验管理 Windows 10、Windows Server 和 Windows 7 桌面与应用</li> </ul> <p>注意重点：Azure 虚拟桌面不支持 RemoteApp 和桌面连接（RADC）客户端或者远程桌面连接（MSTSC）客户端。</p> <p>支撑的远程桌面客户端推荐：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4QWr2"  target="_blank" rel="nofollow">Windows 桌面</a></p> <h2>二，正文</h2> <h3>1，创建虚拟网络</h3> <p>Azure Portal 首页点击 “Create a resource”，搜索 “virtual network”</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/2998f1ac534b0031c08ade1e6c5fcfb6.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>输入以下参数</p> <p>Resource group：“Web_Test_VM_RG”</p> <p>Name：“cnbateblogweb-avd-network”</p> <p>Region 选择：“West US”</p> <p>点击 “Next：IP Addresses &gt; ” 配置 IP 地址范围</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/971157a7e7f9f860beb48adb06c49897.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>关于 IP Address 输入以下参数</p> <p>IPv4 address space：“10.1.0.0/16”</p> <p><strong>Subnet</strong></p> <p>　　Subnet name：“avd-subnet01”</p> <p>　　Subnet address range："10.1.0.0/16"</p> <p>点击 “Review + create” 进行创建预览</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/ec3ef825639cb2477f6a0a6962320f4c.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>等待校验完成后，点击 “Create” 进行创建</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/647c776fe0ec2abdb313a48bba74b93c.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>创建完成后，我们就可以跳转到改资源进行查看</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/8a3b5718790c24955915a66203258dd8.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <h3>2，创建虚拟桌面</h3> <p>搜索 “Azure Virtual Desktop”，并点击图中所指的服务</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/af6e5691f2f4581273562ce389b660ef.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>首先我们需要创建 “host pool” 我们需要点击 “Create a host pool" 进行创建</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9a52f6f2449bf76bd4d1eec67f624635.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>输入以下参数</p> <p>Resource group 选择创建新的："Web_Test_ACD_RG"</p> <p>Host pool name：“cnbateblogweb-avdpool”</p> <p>Location：“West US”</p> <p>Validation environment 默认：“No”</p> <p><strong>Host pool type</strong></p> <p>　　Host pool type：“Personal”</p> <p>　　Assignment type：“Automatic”</p> <p>输入完以上参数后，点击 “Next: Virtual Machines &gt;” 设置虚拟机相关参数</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/36e5cc9e414bbe5be1fccf2e5d2f4dfa.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>编辑以下参数</p> <p>Add Azure virtual machines 选择：“Yes”</p> <p>Resource group：”Web_Test_VM_RG“</p> <p>Name prefix：”allen“</p> <p>Virtual machine location：”West US“</p> <p>Image：”Windows 11 Enterprise“</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/66dd268f9e35be756a1b2eb25088b682.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>Number of VMs：”1“</p> <p>OS disk type：”Standard SSD“</p> <p><strong>Network and security</strong></p> <p>　　virtual network："cnbateblogweb-avd-network"</p> <p>　　Subnet："avd-subnet01"</p> <p>　　Network security group："Basic"</p> <p>　　Public inbound ports："No"</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/76f9c0521e595c8f41995c836418bf38.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p><strong>Domain to join</strong></p> <p><strong></strong>Select which directory you would like to join 选择："Azure Active Directory"</p> <p><strong>Virtual Machine Adminqistrator account</strong></p> <p>　　Username："cnbateblogweb01"</p> <p>　　Password："XXXXXXXXXX"</p> <p>　　Confirm password："XXXXXXXXXX"</p> <p>点击 ”Review + create“ 创建预览</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/3d84aa40a1a236fd6d4fdc7e79cd890b.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>验证完成后，点击 ”Create“ 进行创建</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/b893d68235fbf08c9b48a054a00c5707.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>稍等片刻，等待创建完成后，点击跳转到改资源进行查看</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7a562a5c7cd268fcca2b9246c70bc6d1.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>可以看到我们创建好的&nbsp; host pools</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7852c0e820fa41e44d0282b23a5081b1.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>将用户分配到 Azure Virtual Desktop 的用户组种，选择 “Manage =》Application groups”，并点击进入</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/8f974df289c23ed02bf0fc2d9e6df0c7.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>分配用户，选择 "Manage Assignments"，点击 “Add”</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/37e40554dc176da1fef4afc9b43b9ba3.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>找到之前创建好的用户 “zhangsan”，点击 ”Select“ 进行添加</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/586bd10eb8c9f544a5c4cff700276e5e.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>回到 Azure Virtual Desktop 开始设置桌面工作区。选择 ”Manage =》Workspaces“，点击 ”Create“ 进行创建</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/158ab45b4f9a9aa65669ab4597d79a53.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>输入以下参数</p> <p>Resource group 尽量选择和 Azure Virtual Desktop 的资源组保持一致：”Web_Test_AVD_RG“</p> <p>Workspace name：”cnbateblogweb-sp“</p> <p>Location：”West US“</p> <p>点击 ”Next：Application groups &gt;“ 应用组</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/c2b3fa238a65c5623c832693e5e7eb7b.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>在应用程序注册组选项卡下，选择 ”Yes“，然后选择我们之前创建主机池时自动构建的应用程序组</p> <p>Register application groups：”Yes“</p> <p><strong>Host pool Application groups</strong></p> <p>　　Name：”cnbateblogweb-avdpool-DAG“</p> <p>点击 ”Review + create“ 创建预检验</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/96910a444ab94ef7cdb3933381702395.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>预校验完成后，点击 ”Create“ 进行创建</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/b3458ac5bd037113c0ca1a85309caa1c.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>创建完成后，点击 ”Go to resource“ 跳转到该资源</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7553d4dacf741434019dcbf351c9929b.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <h3>3，连接 Azure Virtual Desktop</h3> <p>为了快速演示，我将使用 Web 远程方式，以下时登录链接：</p> <p><a title="https://rdweb.wvd.microsoft.com/arm/webclient" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://rdweb.wvd.microsoft.com/arm/webclient"  target="_blank" rel="nofollow"><span>https://rdweb.wvd.microsoft.com/arm/webclient</span></a></p> <p>应用组分配的用户账号进行登录</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a1e42845eebaf710f6ad1f47628beea1.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>点击后，提示我们输入用户名和密码，我们可以之前创建 host pools 的本地管理员账号和已分配虚拟机用户登录角色的用户进行登录</p> <p>登录成功后，我们就可以看到 Windows 11 的界面了</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/3224c3105ea35b1c56376f5012e9f245.jpg" alt="Azure Virtual Desktop创建配置管理详解"></p> <p>Bingo，成功！！！</p> <h2>三，结尾</h2> <p><span style="box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; color: rgba(64, 66, 73, 1); font-family: Roboto, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: inherit">RDSH 是 RDS（远程桌面服务）中的一个角色。</span><span style="box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; color: rgba(64, 66, 73, 1); font-family: Roboto, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 16px; vertical-align: inherit">这些类型的服务器用于托管用户远程访问的 Windows 桌面或应用程序。</span></p> <p>&nbsp;Azure Virtual Desktop 的另外一个问题就是费用，<span><span>如果我们想迁移和使用 Azure，或者只是</span><span>通过基础设施的本地管理，那么我们就得考虑怎么合理的计算费用问题了</span></span><em><span>。</span></em></p> <p>参考链接：什么是<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/azure/virtual-desktop/overview?WT.mc_id=AZ-MVP-5004191"  target="_blank" rel="nofollow">Azure Virtual Desktop</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-79703.htm">JavaScript如何不使用ES6函数即可查找数组中心的代码</a></p>
+                                        <p>下一个：<a href="/news/article-80434.htm">Oracle安装 &#8211; shmmax和shmall设置</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-today-hysteria-node.htm" title="1月18日→22.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月18日→22.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-hysteria-node-share.htm" title="1月17日→22.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月17日→22.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51531.htm" title="宠物领养协议电子版模板（宠物领养协议文案）">宠物领养协议电子版模板（宠物领养协议文案）</a></li>
+                        <li class="py-2"><a href="/news/article-57521.htm" title="正规美容医院（正规美容医院哪家好）">正规美容医院（正规美容医院哪家好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-free-node-subscribe.htm" title="1月30日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月30日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-74251.htm" title="北京免费领养猫咪平台（北京领养猫机构在哪儿）">北京免费领养猫咪平台（北京领养猫机构在哪儿）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-free-high-speed-nodes.htm" title="2月16日→19M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">2月16日→19M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-45967.htm" title="动物使用疫苗时应注意哪些事项呢（动物注射疫苗应注意什么）">动物使用疫苗时应注意哪些事项呢（动物注射疫苗应注意什么）</a></li>
+                        <li class="py-2"><a href="/news/article-51014.htm" title="移动破碎制砂一体机租赁合同（移动制砂机租赁价格）">移动破碎制砂一体机租赁合同（移动制砂机租赁价格）</a></li>
+                        <li class="py-2"><a href="/news/article-58752.htm" title="在Vue中mock假数据">在Vue中mock假数据</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
