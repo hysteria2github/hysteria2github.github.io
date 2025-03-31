@@ -125,6 +125,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <p>引言</p> <p>之前saas平台实现动态修改定时任务的时间，都是通过xx-job这样的框架来实现，这样我们可以单独一个服务来管理我们整个saas平台的定时任务，但是最近给银行做的一个小项目，需要本地化部署，所以我不想弄很多的服务，并且他们并没有要求修改以后即时生效，所以我直接采用了 spring schedule结合mysql动态配置执行时间。</p> <p>之前我们用的schedule通过注解的方式，只能用静态的corn表达式，如果想实现动态的需要实现SchedulingConfigurer，并且通过注解@EnableScheduling。如下：</p> <pre class="has"><code class="hljs language-java">package com.zqf.marketing.task;   import com.zqf.db.marketingrobot.sys.model.RobotSysSwitch; import com.zqf.marketing.sys.service.SwitchService; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.context.annotation.Lazy; import org.springframework.scheduling.Trigger; import org.springframework.scheduling.TriggerContext; import org.springframework.scheduling.annotation.EnableScheduling; import org.springframework.scheduling.annotation.SchedulingConfigurer; import org.springframework.scheduling.config.ScheduledTaskRegistrar; import org.springframework.scheduling.support.CronTrigger; import org.springframework.stereotype.Service;  import java.util.Date;  /**  * @author zhenghao  * @description  * @date 2019/1/22 21:50  */  @Lazy(false) @Service @EnableScheduling public class TestTaskService implements SchedulingConfigurer {      private static Logger log = LoggerFactory.getLogger(TestTaskService.class);     @Autowired     private SwitchService switchService;       private String SpringDynamicCronTask() {         String cron = "0/5 * * * * ?";         //从数据库获得配置的corn表达式         RobotSysSwitch switchById = switchService.getSwitchById(5L);         cron = switchById.getSwitchFlag();         log.info(cron);         return cron;     }       @Override     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {         scheduledTaskRegistrar.addTriggerTask(new Runnable() {             @Override             public void run() {                 // 任务逻辑                 log.info("task_task_tak");             }         }, new Trigger() {             @Override             public Date nextExecutionTime(TriggerContext triggerContext) {                 String s = SpringDynamicCronTask();                 // 任务触发，可修改任务的执行周期                 CronTrigger trigger = new CronTrigger(s);                 Date nextExec = trigger.nextExecutionTime(triggerContext);                 return nextExec;             }         });       } }</code></pre> <p>这样我们就可以动态的修改task的执行时间，生效时间为，上一个任务的执行周期，也可以满足我们现在需求，这样就可以实习项目更加的灵活！</p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-82484.htm">Java字符串compareTo()方法示例。</a></p>
+                                        <p>下一个：<a href="/news/article-83203.htm">同安宠物领养中心电话号码（同安宠物店哪家好）</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -134,16 +135,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-37552.htm" title="宠物店领养协议书怎么写范文（宠物店领养是什么意思）">宠物店领养协议书怎么写范文（宠物店领养是什么意思）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-14-today-hysteria-node.htm" title="2月14日→21.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">2月14日→21.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-50487.htm" title="Java基础之浅谈继承、多态">Java基础之浅谈继承、多态</a></li>
-                        <li class="py-2"><a href="/news/article-57520.htm" title="动物诊疗许可证需要多少钱一个（动物诊疗许可证要钱吗）">动物诊疗许可证需要多少钱一个（动物诊疗许可证要钱吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-17-hysteria-node-share.htm" title="1月17日→22.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月17日→22.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-free-subscribe-node.htm" title="1月29日→19.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月29日→19.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-free-node-subscribe.htm" title="1月30日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">1月30日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40509.htm" title="前端发送复杂JSON数据，后端使用@RequestBody接收">前端发送复杂JSON数据，后端使用@RequestBody接收</a></li>
+                        <li class="py-2"><a href="/news/article-35696.htm" title="兽药十大品牌排行榜（兽药排行榜前三十名）">兽药十大品牌排行榜（兽药排行榜前三十名）</a></li>
+                        <li class="py-2"><a href="/news/article-41009.htm" title="宠物零食制作方法大全（宠物零食制作教程）">宠物零食制作方法大全（宠物零食制作教程）</a></li>
+                        <li class="py-2"><a href="/news/article-43003.htm" title="上海正规免费领养宠物猫（上海领养猫咪的平台）">上海正规免费领养宠物猫（上海领养猫咪的平台）</a></li>
+                        <li class="py-2"><a href="/news/article-41501.htm" title="Vite2+Vue3+ts的eslint设置踩坑">Vite2+Vue3+ts的eslint设置踩坑</a></li>
+                        <li class="py-2"><a href="/news/article-57521.htm" title="正规美容医院（正规美容医院哪家好）">正规美容医院（正规美容医院哪家好）</a></li>
                         <li class="py-2"><a href="/news/article-76972.htm" title="被家猫抓伤轻微破皮有血丝怎么办（被家猫抓伤破皮少量出血）">被家猫抓伤轻微破皮有血丝怎么办（被家猫抓伤破皮少量出血）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-high-speed-nodes.htm" title="3月19日→18.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月19日→18.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-81782.htm" title="通过拆分属性将数组转换为对象-JavaScript">通过拆分属性将数组转换为对象-JavaScript</a></li>
-                        <li class="py-2"><a href="/news/article-69644.htm" title="动物疫苗的正确使用方法是哪些呢（动物疫苗的正确使用方法是哪些呢英语）">动物疫苗的正确使用方法是哪些呢（动物疫苗的正确使用方法是哪些呢英语）</a></li>
-                        <li class="py-2"><a href="/news/article-74947.htm" title="济南免费领养宠物的网站（济南免费领养猫）">济南免费领养宠物的网站（济南免费领养猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-22-free-high-speed-nodes.htm" title="3月22日→18.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月22日→18.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -155,7 +156,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
