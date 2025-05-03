@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-109753.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Pytorch学习之图像检索实践_python</title>
+        <meta name="description" content="目录  背景 图像表现 搜索   随着电子商务和在线网站的出现，图像检索在我们的日常生活中的应用一直在增加。 亚马逊、阿里巴巴、Myntra等公司一直在大量利用图像检索技术。当然，只有当通常的信息检索" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-109753.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="Python Pytorch学习之图像检索实践_python" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/207a585ceb4765df9cd82ad8c243027b.webp" />
+        <meta property="og:release_date" content="2025-05-02T09:23:26" />
+    <meta property="og:updated_time" content="2025-05-02T09:23:26" />
+        <meta property="og:description" content="目录  背景 图像表现 搜索   随着电子商务和在线网站的出现，图像检索在我们的日常生活中的应用一直在增加。 亚马逊、阿里巴巴、Myntra等公司一直在大量利用图像检索技术。当然，只有当通常的信息检索" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python Pytorch学习之图像检索实践_python">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+            <a class="navbar-brand logo text-uppercase" href="/">
+                        <span>Hysteria2 Github</span>
+                        </a>
+            <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/client.htm" class="nav-link ">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                    </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            Python Pytorch学习之图像检索实践_python                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li>背景</li> <li>图像表现</li> <li>搜索</li> </ul> </div> <p>随着电子商务和在线网站的出现，图像检索在我们的日常生活中的应用一直在增加。</p> <p>亚马逊、阿里巴巴、Myntra等公司一直在大量利用图像检索技术。当然，只有当通常的信息检索技术失败时，图像检索才会开始工作。</p> <p class="maodian"></p> <h2>背景</h2> <p>图像检索的基本本质是根据查询图像的特征从集合或数据库中查找图像。</p> <p>大多数情况下，这种特征是图像之间简单的视觉相似性。在一个复杂的问题中，这种特征可能是两幅图像在风格上的相似性，甚至是互补性。</p> <p>由于原始形式的图像不会在基于像素的数据中反映这些特征，因此我们需要将这些像素数据转换为一个潜空间，在该空间中，图像的表示将反映这些特征。</p> <p>一般来说，在潜空间中，任何两个相似的图像都会相互靠近，而不同的图像则会相隔很远。这是我们用来训练我们的模型的基本管理规则。一旦我们这样做，检索部分只需搜索潜在空间，在给定查询图像表示的潜在空间中拾取最近的图像。大多数情况下，它是在最近邻搜索的帮助下完成的。</p> <p>因此，我们可以将我们的方法分为两部分：</p> <ul> <li>图像表现</li> <li>搜索</li> </ul> <p>我们将在Oxford 102 Flowers数据集上解决这两个部分。</p> <p class="maodian"></p> <h2>图像表现</h2> <p>我们将使用一种叫做暹罗模型的东西，它本身并不是一种全新的模型，而是一种训练模型的技术。大多数情况下，这是与triplet loss一起使用的。这个技术的基本组成部分是三元组。</p> <p>三元组是3个独立的数据样本，比如A（锚点），B（阳性）和C（阴性）；其中A和B相似或具有相似的特征（可能是同一类），而C与A和B都不相似。这三个样本共同构成了训练数据的一个单元——三元组。</p> <p>注：任何图像检索任务的90%都体现在暹罗网络、triplet loss和三元组的创建中。如果你成功地完成了这些，那么整个努力的成功或多或少是有保证的。</p> <p>首先，我们将创建管道的这个组件——数据。下面我们将在PyTorch中创建一个自定义数据集和数据加载器，它将从数据集中生成三元组。</p> <div class="ay1code"> <pre class="brush:py;">class TripletData(Dataset):      def __init__(self, path, transforms, split="train"):             self.path = path          self.split = split    # train or valid          self.cats = 102       # number of categories          self.transforms = transforms                   def __getitem__(self, idx):             # our positive class for the triplet          idx = str(idx%self.cats + 1)             # choosing our pair of positive images (im1, im2)          positives = os.listdir(os.path.join(self.path, idx))          im1, im2 = random.sample(positives, 2)             # choosing a negative class and negative image (im3)          negative_cats = [str(x+1) for x in range(self.cats)]          negative_cats.remove(idx)          negative_cat = str(random.choice(negative_cats))          negatives = os.listdir(os.path.join(self.path, negative_cat))             im3 = random.choice(negatives)             im1,im2,im3 = os.path.join(self.path, idx, im1), os.path.join(self.path, idx, im2), os.path.join(self.path, negative_cat, im3)             im1 = self.transforms(Image.open(im1))             im2 = self.transforms(Image.open(im2))             im3 = self.transforms(Image.open(im3))             return [im1, im2, im3]               # we'll put some value that we want since there can be far too many triplets possible      # multiples of the number of images/ number of categories is a good choice      def __len__(self):          return self.cats*8  # Transforms  train_transforms = transforms.Compose([      transforms.Resize((224,224)),      transforms.RandomHorizontalFlip(),      transforms.ToTensor(),      transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),  ])  val_transforms = transforms.Compose([      transforms.Resize((224, 224)),      transforms.ToTensor(),      transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),  ])  # Datasets and Dataloaders  train_data = TripletData(PATH_TRAIN, train_transforms)  val_data = TripletData(PATH_VALID, val_transforms)  train_loader = torch.utils.data.DataLoader(dataset = train_data, batch_size=32, shuffle=True, num_workers=4)  val_loader = torch.utils.data.DataLoader(dataset = val_data, batch_size=32, shuffle=False, num_workers=4)</pre> </div> <p>现在我们有了数据，让我们转到暹罗网络。</p> <p>暹罗网络给人的印象是2个或3个模型，但是它本身是一个单一的模型。所有这些模型共享权重，即只有一个模型。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/0845c4c096613da33de40d869a0ddbd4.jpg"></p> <p>如前所述，将整个体系结构结合在一起的关键因素是triplet loss。triplet loss产生了一个目标函数，该函数迫使相似输入对（锚点和正）之间的距离小于不同输入对（锚点和负）之间的距离，并限定一定的阈值。</p> <p>下面我们来看看triplet loss以及训练管道实现。</p> <div class="ay1code"> <pre class="brush:py;">class TripletLoss(nn.Module):      def __init__(self, margin=1.0):                    super(TripletLoss, self).__init__()          self.margin = margin                          def calc_euclidean(self, x1, x2):          return (x1 - x2).pow(2).sum(1)                  # Distances in embedding space is calculated in euclidean      def forward(self, anchor, positive, negative):                    distance_positive = self.calc_euclidean(anchor, positive)                    distance_negative = self.calc_euclidean(anchor, negative)                    losses = torch.relu(distance_positive - distance_negative + self.margin)                    return losses.mean()             device = 'cuda'     # Our base model  model = models.resnet18().cuda()  optimizer = optim.Adam(model.parameters(), lr=0.001)  triplet_loss = TripletLoss()     # Training  for epoch in range(epochs):            model.train()      epoch_loss = 0.0            for data in tqdm(train_loader):                    optimizer.zero_grad()          x1,x2,x3 = data          e1 = model(x1.to(device))          e2 = model(x2.to(device))          e3 = model(x3.to(device))                     loss = triplet_loss(e1,e2,e3)          epoch_loss += loss          loss.backward()          optimizer.step()                print("Train Loss: {}".format(epoch_loss.item()))                 class TripletLoss(nn.Module):      def __init__(self, margin=1.0):                    super(TripletLoss, self).__init__()          self.margin = margin                          def calc_euclidean(self, x1, x2):          return (x1 - x2).pow(2).sum(1)                  # Distances in embedding space is calculated in euclidean      def forward(self, anchor, positive, negative):                    distance_positive = self.calc_euclidean(anchor, positive)                    distance_negative = self.calc_euclidean(anchor, negative)                    losses = torch.relu(distance_positive - distance_negative + self.margin)                    return losses.mean()             device = 'cuda'        # Our base model  model = models.resnet18().cuda()  optimizer = optim.Adam(model.parameters(), lr=0.001)  triplet_loss = TripletLoss()        # Training  for epoch in range(epochs):      model.train()      epoch_loss = 0.0      for data in tqdm(train_loader):             optimizer.zero_grad()                    x1,x2,x3 = data                    e1 = model(x1.to(device))          e2 = model(x2.to(device))          e3 = model(x3.to(device))                     loss = triplet_loss(e1,e2,e3)          epoch_loss += loss          loss.backward()          optimizer.step()                print("Train Loss: {}".format(epoch_loss.item()))</pre> </div> <p>到目前为止，我们的模型已经经过训练，可以将图像转换为一个嵌入空间。接下来，我们进入搜索部分。</p> <p class="maodian"></p> <h2>搜索</h2> <p>我们可以很容易地使用Scikit Learn提供的最近邻搜索。我们将探索新的更好的东西，而不是走简单的路线。</p> <p>我们将使用Faiss。这比最近的邻居要快得多，如果我们有大量的图像，这种速度上的差异会变得更加明显。</p> <p>下面我们将演示如何在给定查询图像时，在存储的图像表示中搜索最近的图像。</p> <div class="ay1code"> <pre class="brush:py;">#!pip install faiss-gpu  import faiss                              faiss_index = faiss.IndexFlatL2(1000)   # build the index     # storing the image representations  im_indices = []     with torch.no_grad():      for f in glob.glob(os.path.join(PATH_TRAIN, '*/*')):                    im = Image.open(f)          im = im.resize((224,224))          im = torch.tensor([val_transforms(im).numpy()]).cuda()                preds = model(im)          preds = np.array([preds[0].cpu().numpy()])          faiss_index.add(preds) #add the representation to index          im_indices.append(f)   #store the image name to find it later on               # Retrieval with a query image  with torch.no_grad():      for f in os.listdir(PATH_TEST):                    # query/test image          im = Image.open(os.path.join(PATH_TEST,f))          im = im.resize((224,224))          im = torch.tensor([val_transforms(im).numpy()]).cuda()                test_embed = model(im).cpu().numpy()                    _, I = faiss_index.search(test_embed, 5)          print("Retrieved Image: {}".format(im_indices[I[0][0]]))</pre> </div> <p>这涵盖了基于现代深度学习的图像检索，但不会使其变得太复杂。大多数检索问题都可以通过这个基本管道解决。</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-109751.htm">SpringCloud Sleuth分布式请求链路追踪</a></p>
+                                        <p>下一个：<a href="/news/article-110599.htm">动物使用疫苗时应注意哪些事项和禁忌（动物使用疫苗时应注意哪些事项和禁忌症）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-97102.htm" title="使用Kotlin实现百思不得姐弹出菜单">使用Kotlin实现百思不得姐弹出菜单</a></li>
+                        <li class="py-2"><a href="/news/article-100815.htm" title="宠物粮食品牌前十名排名图片大全（宠物粮食品牌前十名排名图片大全及价格）">宠物粮食品牌前十名排名图片大全（宠物粮食品牌前十名排名图片大全及价格）</a></li>
+                        <li class="py-2"><a href="/news/article-94942.htm" title="芭比堂宠物医院前台怎么样呀（芭比堂宠物医院工资待遇）">芭比堂宠物医院前台怎么样呀（芭比堂宠物医院工资待遇）</a></li>
+                        <li class="py-2"><a href="/news/article-97896.htm" title="CSS让交互更加生动！有意思的鼠标跟随 3D 旋转动效">CSS让交互更加生动！有意思的鼠标跟随 3D 旋转动效</a></li>
+                        <li class="py-2"><a href="/news/article-89666.htm" title="动物疫苗经营许可证怎么申请流程图片（经营动物疫苗药品需要什么手续）">动物疫苗经营许可证怎么申请流程图片（经营动物疫苗药品需要什么手续）</a></li>
+                        <li class="py-2"><a href="/news/article-103854.htm" title="多线程详解 创建多线程">多线程详解 创建多线程</a></li>
+                        <li class="py-2"><a href="/news/article-103132.htm" title="宠物批发零售网站（宠物批发网站大全）">宠物批发零售网站（宠物批发网站大全）</a></li>
+                        <li class="py-2"><a href="/news/article-98559.htm" title="宠物领养协议具有法律效应吗为什么还要签字（宠物领养协议需要身份证复印件吗）">宠物领养协议具有法律效应吗为什么还要签字（宠物领养协议需要身份证复印件吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-sing-hysteria-windows.htm" title="4月13日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月13日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-87492.htm" title="养猫半年我查出弓形虫阴性（猫爬过的床单有弓形虫么）">养猫半年我查出弓形虫阴性（猫爬过的床单有弓形虫么）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
