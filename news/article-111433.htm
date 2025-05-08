@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2github.github.io/news/article-111433.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpringBoot/Cloud项目-前台上传图片文件，Java转成Base64保存到数据库完整代码</title>
+        <meta name="description" content="业务需求： html页面上传图片到后台&nbsp; ，后台用Java转换成Base64 ，然后把数据存到数据库。 -------------------------------------------" />
+        <link rel="icon" href="/assets/website/img/hysteria2github/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2 Github免费机场节点订阅官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2github.github.io/news/article-111433.htm" />
+    <meta property="og:site_name" content="Hysteria2 Github免费机场节点订阅官网" />
+    <meta property="og:title" content="SpringBoot/Cloud项目-前台上传图片文件，Java转成Base64保存到数据库完整代码" />
+    <meta property="og:image" content="https://hysteria2github.github.io/uploads/20240913/41089b03cf7c009b744692efeb14e18a.webp" />
+        <meta property="og:release_date" content="2025-05-04T09:28:22" />
+    <meta property="og:updated_time" content="2025-05-04T09:28:22" />
+        <meta property="og:description" content="业务需求： html页面上传图片到后台&nbsp; ，后台用Java转换成Base64 ，然后把数据存到数据库。 -------------------------------------------" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringBoot/Cloud项目-前台上传图片文件，Java转成Base64保存到数据库完整代码">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/website/css/hysteria2github/bootstrap.min.css" rel="stylesheet">
+    <!-- tiny slider -->
+    <link href="/assets/website/css/hysteria2github/tiny-slider.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/hysteria2github/swiper.min.css" type="text/css">
+    <!-- Materialdesign icons css -->
+    <link href="/assets/website/css/hysteria2github/materialdesignicons.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/website/css/hysteria2github/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N5K97JTW4M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N5K97JTW4M');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+        <div class="container-fluid custom-container">
+            <a class="navbar-brand logo text-uppercase" href="/">
+                        <span>Hysteria2 Github</span>
+                        </a>
+            <button class="navbar-toggler me-3 order-2 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto navbar-center">
+                                        <li class="nav-item">
+                        <a href="/" class="nav-link ">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/free-nodes/" class="nav-link ">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/paid-subscribe/" class="nav-link ">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/client.htm" class="nav-link ">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a href="/news/" class="nav-link ">新闻资讯</a>
+                    </li>
+                                    </ul>
+                <!--end navbar-nav-->
+            </div>
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- start home section -->
+    <section class="home category" id="home">
+        <div class="container" id="ani-round">
+            <div class="home-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="title mt-5 mt-lg-0">
+                            SpringBoot/Cloud项目-前台上传图片文件，Java转成Base64保存到数据库完整代码                        </h1>
+                        <p class="f-16 my-4 text-muted">
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <div class="animation-image" id="home-animation">
+                            <div class="main-image mt-5 mt-lg-0 ms-lg-5 position-relative">
+                                <img src="/assets/website/img/hysteria2github/home-bg.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start features -->
+    <section class="section " id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="htmledit_views"> <h3>业务需求：</h3> <p>html页面上传图片到后台&nbsp; ，后台用Java转换成Base64 ，然后把数据存到数据库。</p> <p>---------------------------------------------------------------------------------------------------------------------</p> <p>不了解图片与Base64互转的 ，可以看看下面这篇博客</p> <p>https://www.cnblogs.com/buguge/p/12177895.html</p> <h3>前端</h3> <p>我用的是模态框，使用的是Ajax上传方式</p> <pre><code class="language-html"> &lt;label class="control-label" for="img"&gt;图例：&lt;/label&gt;     &lt;input type="file" class="form-control" id="img" placeholder=""&gt;</code></pre> <pre><code class="language-javascript"> $("#add").click(function() {                var file = $('#img')[0].files[0];         var formData = new FormData();         formData.append("id", "007");         formData.append("name", "007");         formData.append("img", file);          $.ajax({             url: url + 'mibs/zzjgs/getZzjgAdd',             data: formData,             type:'post',             cache: false,             processData: false,             contentType: false,             async : false,             dataType:'json',             success: function (data) {                 if ((data.msg) == "成功" ){                     alert("操作成功！");                     $('#modify').modal('hide');                     getSearch();                 }else {                     alert("操作失败！");                 }                        }         })     });</code></pre> <h3>后台Springcloud</h3> <p>先看一下项目结构：</p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220603/4d487d4bc02548fe6f193e6d2fb4175d.jpg"></p> <p>feign（网关）</p> <p>Controller代码：</p> <pre><code class="language-java">          @RequestMapping(value = "/zzjgs/getZzjgAdd", method = RequestMethod.POST)     @CrossOrigin     public String addzzjg(@RequestParam("id") String id, @RequestParam("name") String name,@RequestParam("img")MultipartFile imgFile) throws UnsupportedEncodingException {          R r_ = new R(0, null, "");           r_ = SysZzjgService.addzzjg(id,name,imgFile);//调用service代码          String strv = JSONObject.toJSONString(r_);          return strv;     }</code></pre> <p>service代码：</p> <p>需要一个注解&nbsp;&nbsp;consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</p> <p>没有这个注解无法传文件（MultipartFile&nbsp;）到后面的 Cloud</p> <pre><code class="language-java">  @PostMapping(value = "/addZzjg", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)     R addzzjg(@RequestParam String id, @RequestParam String name, @RequestPart("img") MultipartFile img);</code></pre> <p>Cloud</p> <p>处理图片，操作数据库</p> <p>先来俩工具类</p> <p>1.这个就是上面那个链接里的代码</p> <pre><code class="language-java">package com.zhongjia.system.util;  import sun.misc.BASE64Decoder; import sun.misc.BASE64Encoder;  import java.io.*;  public class ImageBase64Converter {     /**      * 本地文件（图片、excel等）转换成Base64字符串      *      * @param imgPath &nbsp;&nbsp; &nbsp;      */     public static String convertFileToBase64(String imgPath) {         byte[] data = null;         // 读取图片字节数组         try {             InputStream in = new FileInputStream(imgPath);             System.out.println("文件大小（字节）="+in.available());             data = new byte[in.available()];             in.read(data);             in.close();         } catch (IOException e) {             e.printStackTrace();         }         // 对字节数组进行Base64编码，得到Base64编码的字符串         BASE64Encoder encoder = new BASE64Encoder();         String base64Str = encoder.encode(data);         return base64Str;     }      /**      * 将base64字符串，生成文件      */     public static File convertBase64ToFile(String fileBase64String, String filePath, String fileName) {          BufferedOutputStream bos = null;         FileOutputStream fos = null;         File file = null;         try {             File dir = new File(filePath);             if (!dir.exists() &amp;&amp; dir.isDirectory()) {//判断文件目录是否存在                 dir.mkdirs();             }              BASE64Decoder decoder = new BASE64Decoder();             byte[] bfile = decoder.decodeBuffer(fileBase64String);              file = new File(filePath + File.separator + fileName);             fos = new FileOutputStream(file);             bos = new BufferedOutputStream(fos);             bos.write(bfile);             return file;         } catch (Exception e) {             e.printStackTrace();             return null;         } finally {             if (bos != null) {                 try {                     bos.close();                 } catch (IOException e1) {                     e1.printStackTrace();                 }             }             if (fos != null) {                 try {                     fos.close();                 } catch (IOException e1) {                     e1.printStackTrace();                 }             }         }     }  }</code></pre> <p>2.这个是获取项目根目录的，图片就上传到项目根目录中就OK</p> <pre><code class="language-java">package com.zhongjia.system.util;  import java.io.File;  public class UploadUtils {      // 项目根路径下的目录  -- SpringBoot static 目录相当于是根路径下（SpringBoot 默认）     public final static String IMG_PATH_PREFIX = "static/uploadImgs";      public static File getImgDirFile(){          // 构建上传文件的存放 "文件夹" 路径         String fileDirPath = new String("src/main/resources/" + IMG_PATH_PREFIX);          File fileDir = new File(fileDirPath);         if(!fileDir.exists()){             // 递归生成文件夹             fileDir.mkdirs();         }         return fileDir;     } }</code></pre> <p>Controller代码：</p> <p>图片上传到项目根目录（本地）后，开始处理</p> <pre><code class="language-java">  @PostMapping(value = "/addZzjg", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)     public R getzzjgadd(@RequestParam(value = "zzid",required = true)int zzid, @RequestParam(@RequestParam(value = "id",required = true)String parid,@RequestParam(value = "name",required = true)String remark,@RequestPart(value = "img",required = true) MultipartFile imgFile) throws Exception {         try {             String img64="";                        // 拿到文件名             String filename = imgFile.getOriginalFilename();              //拿到文件后缀名             String fileTyle =filename.substring(filename.lastIndexOf(".")+1,filename.length());              // 存放上传图片的文件夹             File fileDir = UploadUtils.getImgDirFile();              // 输出文件夹绝对路径  -- 这里的绝对路径是相当于当前项目的路径而不是“容器”路径             //System.out.println(fileDir.getAbsolutePath());              try {                 // 构建真实的文件路径                 File newFile = new File(fileDir.getAbsolutePath() + File.separator + filename);                 //System.out.println(newFile.getAbsolutePath());                  // 上传图片到 -》 “绝对路径”                 imgFile.transferTo(newFile);                  //图片转换成Base64                 String imgBase64Str= ImageBase64Converter.convertFileToBase64(newFile.getAbsolutePath());                  //前台直接这样就可以显示 base64类型的图片  &lt;img src=“data:image/png;base64,***********************************"/&gt;                 //所以要把数据组合起来 ,fileTyle是后缀名     imgBase64Str是图片转换的Base64                 img64 = "data:image/"+fileTyle+";base64,"+imgBase64Str;                      //删除存放图片的文件夹  既然base64都存到数据库了 上传的图片就可以删除了                 FileUtils.deleteDirectory(fileDir);              } catch (IOException e) {                 e.printStackTrace();             }              int  m  = sysZzjgService.getzzjgedit(id,name,img64);//根据SQL语句修改              return R.result(m, (Object) m, ExceptionCode.SUCCESS.getMsg());          } catch (Exception ex) {              return R.result(ExceptionCode.JSON_PARSE_ERROR.getCode(),(Object)"[{}]",ex.getMessage());          }     }</code></pre> <p>OK了 剩下的Service 、Mapper的代码就看你们自己的需求来写。</p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-110600.htm">宠物犬领养中心在哪里（正规宠物领养机构）</a></p>
+                                        <p>下一个：<a href="/news/article-111435.htm">宠物粮食批发市场兰州在哪里啊电话多少（兰州宠物用品批发）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-86767.htm" title="动物疫苗注射的作用是什么呢视频（动物疫苗的使用方法）">动物疫苗注射的作用是什么呢视频（动物疫苗的使用方法）</a></li>
+                        <li class="py-2"><a href="/news/article-103133.htm" title="深圳市宠物领养之家官网电话号码（深圳宠物领养公众号）">深圳市宠物领养之家官网电话号码（深圳宠物领养公众号）</a></li>
+                        <li class="py-2"><a href="/news/article-109751.htm" title="SpringCloud Sleuth分布式请求链路追踪">SpringCloud Sleuth分布式请求链路追踪</a></li>
+                        <li class="py-2"><a href="/news/article-111433.htm" title="SpringBoot/Cloud项目-前台上传图片文件，Java转成Base64保存到数据库完整代码">SpringBoot/Cloud项目-前台上传图片文件，Java转成Base64保存到数据库完整代码</a></li>
+                        <li class="py-2"><a href="/news/article-94326.htm" title="吉泰医药集团（吉泰医药集团是国企吗）">吉泰医药集团（吉泰医药集团是国企吗）</a></li>
+                        <li class="py-2"><a href="/news/article-106282.htm" title="JavaScript使用AND运算符合并布尔数组方法详解">JavaScript使用AND运算符合并布尔数组方法详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-28-free-subscribe-node.htm" title="4月28日→19.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月28日→19.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-5-4-hysteria-node-github.htm" title="5月4日→18.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">5月4日→18.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-91432.htm" title="同城领养猫咪平台公众号叫什么 同城领养猫咪平台公众号叫什么名字">同城领养猫咪平台公众号叫什么 同城领养猫咪平台公众号叫什么名字</a></li>
+                        <li class="py-2"><a href="/news/article-94945.htm" title="开宠物店在哪里进货好（想开宠物店去哪里找货源）">开宠物店在哪里进货好（想开宠物店去哪里找货源）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">16</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end features -->
+        <div class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center pt-5">
+                <div class="col-lg-12">
+                    <div class="copy-right mb-5 text-center text-muted">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <a href="/">Hysteria2 Github免费机场节点订阅官网</a> 版权所有 Powered by WordPress
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bootstrap -->
+    <script src="/assets/website/js/frontend/hysteria2github/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2github/swiper.min.js"></script>
+    <!-- counter -->
+    <script src="/assets/website/js/frontend/hysteria2github/counter.init.js"></script>
+    <!-- Custom -->
+    <script src="/assets/website/js/frontend/hysteria2github/app.js"></script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#home-animation");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script>
+    (function() {
+        // Add event listener
+        document.addEventListener("mousemove", parallax);
+        const elem = document.querySelector("#ani-round");
+        // Magic happens here
+        function parallax(e) {
+            let _w = window.innerWidth / 2;
+            let _h = window.innerHeight / 2;
+            let _mouseX = e.clientX;
+            let _mouseY = e.clientY;
+            let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+            let _depth2 = `${50 - (_mouseX - _w) * 0.02}% ${50 - (_mouseY - _h) * 0.02}%`;
+            let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+            let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+            elem.style.backgroundPosition = x;
+        }
+
+    })();
+    </script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
