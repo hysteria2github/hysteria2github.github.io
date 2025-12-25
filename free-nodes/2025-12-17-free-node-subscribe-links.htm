@@ -373,14 +373,14 @@ A: 重新启动网络适配器，或者尝试更换共享方式。</p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>当 V2Ray 报错 inbound 没有监听，可能是哪些配置问题？</h5></div>
+    <div class="panel-heading"><h5>如何合理设置 Clash 的 proxy-group 实现自动切换？</h5></div>
     <div class="panel-body">
-        检查 inbound 配置是否包含正确的 port、protocol 与 listen 字段；确认没有端口冲突或权限问题（非 root 绑定 1024 以下端口会失败）；查看日志中具体错误信息并根据提示修复配置。<hr />    </div>
+        创建包含多个节点的策略组（如 `url-test` 或 `fallback`），设置合适的检测 URL 与检测频率，启用延迟优先或可用性优先策略。这样客户端会自动选择延迟最低或可用节点，提升稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2RayN 与 WinXray 哪个更易用？</h5></div>
+    <div class="panel-heading"><h5>SSR 的协议插件如何增强连接稳定性？</h5></div>
     <div class="panel-body">
-        V2RayN 界面更简洁，功能更稳定，而 WinXray 提供了更现代的界面和自动测速功能。对于初学者来说，V2RayN 上手更快；而追求高级功能的用户可能更喜欢 WinXray。<hr />    </div>
+        SSR 的协议插件可以增加流量的伪装特性，模拟常见协议或浏览器行为，从而降低被识别和封锁的风险。这对不稳定网络或高封锁环境尤其有帮助。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何用 iptables 限制 V2Ray 服务的访问来源？</h5></div>
@@ -393,9 +393,19 @@ A: 重新启动网络适配器，或者尝试更换共享方式。</p>
         支持。通过配置路由规则和策略组，Sing-box 可以自动判断流量类型并选择最佳出口，实现智能分流和多节点负载均衡，提高访问效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>当 V2Ray 报错 inbound 没有监听，可能是哪些配置问题？</h5></div>
+    <div class="panel-body">
+        检查 inbound 配置是否包含正确的 port、protocol 与 listen 字段；确认没有端口冲突或权限问题（非 root 绑定 1024 以下端口会失败）；查看日志中具体错误信息并根据提示修复配置。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 节点测速功能如何优化游戏体验？</h5></div>
     <div class="panel-body">
         Shadowrocket 会定期测速节点延迟和丢包率，并结合策略组自动切换最佳节点。保证游戏流量走低延迟节点，减少延迟和掉线，提高游戏流畅度和稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2RayN 与 WinXray 哪个更易用？</h5></div>
+    <div class="panel-body">
+        V2RayN 界面更简洁，功能更稳定，而 WinXray 提供了更现代的界面和自动测速功能。对于初学者来说，V2RayN 上手更快；而追求高级功能的用户可能更喜欢 WinXray。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 是否支持 DNS 分流？</h5></div>
@@ -410,17 +420,7 @@ A: 重新启动网络适配器，或者尝试更换共享方式。</p>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何识别节点是否被封锁或限速？</h5></div>
     <div class="panel-body">
-        通过对比不同节点的 speedtest、ping、下载测速以及 traceroute 路由变化来判断；若多个节点同时异常可能是本地网络问题，单个节点异常则可能被封锁或运营商限速，应尝试更换端口或传输方式。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何合理设置 Clash 的 proxy-group 实现自动切换？</h5></div>
-    <div class="panel-body">
-        创建包含多个节点的策略组（如 `url-test` 或 `fallback`），设置合适的检测 URL 与检测频率，启用延迟优先或可用性优先策略。这样客户端会自动选择延迟最低或可用节点，提升稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议插件如何增强连接稳定性？</h5></div>
-    <div class="panel-body">
-        SSR 的协议插件可以增加流量的伪装特性，模拟常见协议或浏览器行为，从而降低被识别和封锁的风险。这对不稳定网络或高封锁环境尤其有帮助。    </div>
+        通过对比不同节点的 speedtest、ping、下载测速以及 traceroute 路由变化来判断；若多个节点同时异常可能是本地网络问题，单个节点异常则可能被封锁或运营商限速，应尝试更换端口或传输方式。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -449,16 +449,16 @@ A: 重新启动网络适配器，或者尝试更换共享方式。</p>
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-20-free-hysteria-node.htm" title="11月20日→20.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月20日→20.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-hysteria-node.htm" title="11月9日→18.2M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月9日→18.2M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-25-latest-hysteria-node.htm" title="12月25日→19.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">12月25日→19.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-12-sing-hysteria-windows.htm" title="11月12日→19.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月12日→19.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-8-free-hysteria-node.htm" title="12月8日→18.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">12月8日→18.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-22-free-high-speed-nodes.htm" title="12月22日→21.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">12月22日→21.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-12-2-hysteria-github.htm" title="12月2日→21.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">12月2日→21.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-22-node-share-links.htm" title="11月22日→21.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月22日→21.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-27-free-hysteria-node.htm" title="11月27日→22.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月27日→22.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-13-free-node-subscribe.htm" title="11月13日→21.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月13日→21.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-subscribe-node.htm" title="11月18日→21.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月18日→21.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-8-hysteria-node-share.htm" title="11月8日→20.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月8日→20.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-18-free-subscribe-node.htm" title="12月18日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">12月18日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-11-sing-hysteria-windows.htm" title="11月11日→18.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月11日→18.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-7-latest-hysteria-node.htm" title="11月7日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月7日→21M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-hysteria-node.htm" title="11月17日→19M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月17日→19M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-14-hysteria-node.htm" title="12月14日→22.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">12月14日→22.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-19-free-subscribe-node.htm" title="11月19日→19.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月19日→19.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-21-hysteria-node-github.htm" title="11月21日→19.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">11月21日→19.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -470,7 +470,7 @@ A: 重新启动网络适配器，或者尝试更换共享方式。</p>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
