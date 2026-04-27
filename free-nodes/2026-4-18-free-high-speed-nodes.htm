@@ -295,9 +295,9 @@ V2Ray强大的缓存与转发能力，确保视频播放无缓冲，极大提升
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 的多机场订阅如何整合？</h5></div>
+    <div class="panel-heading"><h5>QuantumultX 与 Shadowrocket 相比的最大区别是什么？</h5></div>
     <div class="panel-body">
-        Hiddify Next 提供合并订阅功能，可将多个链接导入同一配置，自动去重并分类节点。用户可设置优先级与标签，方便快速选择不同提供商的线路，提升连接灵活性与冗余度。<hr />    </div>
+        QuantumultX 在规则系统和自动化脚本上更灵活，支持丰富的 rewrite 与 filter 功能，而 Shadowrocket 则更轻便易用，适合普通用户快速切换节点。二者可根据使用习惯与功能需求选择。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Trojan-Go 的多路复用（mux）如何开启？</h5></div>
@@ -310,19 +310,14 @@ V2Ray强大的缓存与转发能力，确保视频播放无缓冲，极大提升
         VMess 连接不稳定可能由节点延迟过高、服务器防火墙、TLS 配置错误或 ISP 丢包引起。建议测试不同传输协议（如 WS、gRPC）或切换节点，检查日志确认具体错误信息。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何使用 Sing-box 配合 Clash Rules 实现精细分流？</h5></div>
+    <div class="panel-heading"><h5>Shadowsocks 密码泄露后应如何应对？</h5></div>
     <div class="panel-body">
-        将 Clash 的 rules 段提取出来转换为 Sing-box 的 routing 格式，或直接引用 rule-providers 源。Sing-box 的路由引擎支持更复杂的条件匹配，可结合 GeoIP 与 keyword 实现精细分流策略。<hr />    </div>
+        立即更改服务端密码与相应的端口，检查服务器是否存在异常连接或 root 活动，查看日志并封禁可疑 IP。若使用多人共享节点，建议为每个用户单独分配独立端口与密码以降低风险传播。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 显示证书错误，如何修复？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 的多机场订阅如何整合？</h5></div>
     <div class="panel-body">
-        证书错误通常由域名与证书不匹配或证书链不完整引起。请检查服务器证书是否为有效域名签发并包含完整链，如果使用 Let's Encrypt，请确保证书未过期并已正确安装到反向代理或服务端。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 与 Shadowrocket 相比的最大区别是什么？</h5></div>
-    <div class="panel-body">
-        QuantumultX 在规则系统和自动化脚本上更灵活，支持丰富的 rewrite 与 filter 功能，而 Shadowrocket 则更轻便易用，适合普通用户快速切换节点。二者可根据使用习惯与功能需求选择。<hr />    </div>
+        Hiddify Next 提供合并订阅功能，可将多个链接导入同一配置，自动去重并分类节点。用户可设置优先级与标签，方便快速选择不同提供商的线路，提升连接灵活性与冗余度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 的透明代理适合哪些应用场景？</h5></div>
@@ -330,14 +325,19 @@ V2Ray强大的缓存与转发能力，确保视频播放无缓冲，极大提升
         透明代理通过 TUN 或 WinDivert 拦截系统 IP 层流量，无需配置每个应用。适合全局科学上网、在线游戏或对局域网设备统一代理的场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 显示证书错误，如何修复？</h5></div>
+    <div class="panel-body">
+        证书错误通常由域名与证书不匹配或证书链不完整引起。请检查服务器证书是否为有效域名签发并包含完整链，如果使用 Let's Encrypt，请确保证书未过期并已正确安装到反向代理或服务端。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何使用 Sing-box 配合 Clash Rules 实现精细分流？</h5></div>
+    <div class="panel-body">
+        将 Clash 的 rules 段提取出来转换为 Sing-box 的 routing 格式，或直接引用 rule-providers 源。Sing-box 的路由引擎支持更复杂的条件匹配，可结合 GeoIP 与 keyword 实现精细分流策略。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow 是否支持 IPv6 流量代理？</h5></div>
     <div class="panel-body">
         Mellow 支持 IPv6，只需在配置文件中启用 IPv6 DNS 解析并确认操作系统开启 IPv6 路由功能。部分节点若不支持 IPv6，则相关请求会自动回退到 IPv4，保证兼容性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowsocks 密码泄露后应如何应对？</h5></div>
-    <div class="panel-body">
-        立即更改服务端密码与相应的端口，检查服务器是否存在异常连接或 root 活动，查看日志并封禁可疑 IP。若使用多人共享节点，建议为每个用户单独分配独立端口与密码以降低风险传播。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 是什么？它与 Shadowsocks 有何不同？</h5></div>
@@ -371,16 +371,16 @@ V2Ray强大的缓存与转发能力，确保视频播放无缓冲，极大提升
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-today-hysteria-node.htm" title="4月13日→20.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月13日→20.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-18-free-high-speed-nodes.htm" title="4月18日→20M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月18日→20M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-20-hysteria-node-github.htm" title="3月20日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月20日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-2-hysteria-node-share.htm" title="4月2日→22.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月2日→22.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-22-today-hysteria-node.htm" title="4月22日→22.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月22日→22.6M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-17-hysteria-node-share.htm" title="3月17日→19.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月17日→19.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-4-9-hysteria-node-share.htm" title="4月9日→20.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月9日→20.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-16-today-hysteria-node.htm" title="4月16日→20.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月16日→20.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-10-hysteria-node.htm" title="4月10日→21.2M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月10日→21.2M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-15-hysteria-github.htm" title="4月15日→20.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月15日→20.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-7-free-high-speed-nodes.htm" title="3月7日→19.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月7日→19.4M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-14-hysteria-github.htm" title="3月14日→21.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月14日→21.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-21-node-share-links.htm" title="3月21日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月21日→20.5M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-26-hysteria-node-share.htm" title="3月26日→18.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">3月26日→18.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-21-free-subscribe-node.htm" title="4月21日→19.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月21日→19.9M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-25-free-node-subscribe.htm" title="4月25日→18.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月25日→18.8M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-26-free-high-speed-nodes.htm" title="4月26日→22.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月26日→22.1M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-13-today-hysteria-node.htm" title="4月13日→20.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址">4月13日→20.3M/S|2025年最新免费节点Hysteria2 Github订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -392,7 +392,7 @@ V2Ray强大的缓存与转发能力，确保视频播放无缓冲，极大提升
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">20</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
