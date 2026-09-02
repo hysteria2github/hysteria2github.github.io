@@ -1,4 +1,4 @@
-# 8月26日→18.2M/S|2025年最新免费节点Hysteria2 Github订阅链接地址  更新时间 2026-08-26 10:08:42
+# 9月2日→18.7M/S|2025年最新免费节点Hysteria2 Github订阅链接地址  更新时间 2026-09-02 10:30:26
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://hysteria2github.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://hysteria2github.github.io/uploads/2026/08/0-20260826.yaml
-- https://hysteria2github.github.io/uploads/2026/08/1-20260826.yaml
-- https://hysteria2github.github.io/uploads/2026/08/2-20260826.yaml
-- https://hysteria2github.github.io/uploads/2026/08/3-20260826.yaml
-- https://hysteria2github.github.io/uploads/2026/08/4-20260826.yaml
+- https://hysteria2github.github.io/uploads/2026/09/0-20260902.yaml
+- https://hysteria2github.github.io/uploads/2026/09/1-20260902.yaml
+- https://hysteria2github.github.io/uploads/2026/09/2-20260902.yaml
+- https://hysteria2github.github.io/uploads/2026/09/3-20260902.yaml
+- https://hysteria2github.github.io/uploads/2026/09/4-20260902.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://hysteria2github.github.io/uploads/2026/08/0-20260826.txt
-- https://hysteria2github.github.io/uploads/2026/08/1-20260826.txt
-- https://hysteria2github.github.io/uploads/2026/08/2-20260826.txt
-- https://hysteria2github.github.io/uploads/2026/08/3-20260826.txt
-- https://hysteria2github.github.io/uploads/2026/08/4-20260826.txt
+- https://hysteria2github.github.io/uploads/2026/09/0-20260902.txt
+- https://hysteria2github.github.io/uploads/2026/09/1-20260902.txt
+- https://hysteria2github.github.io/uploads/2026/09/2-20260902.txt
+- https://hysteria2github.github.io/uploads/2026/09/3-20260902.txt
+- https://hysteria2github.github.io/uploads/2026/09/4-20260902.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://hysteria2github.github.io/uploads/2026/08/20260826.json
+- https://hysteria2github.github.io/uploads/2026/09/20260902.json
 
 ## 更多Clash节点订阅 ：
 
